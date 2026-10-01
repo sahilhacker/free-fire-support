@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Admin Panel - Free Fire Support</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">
+    FREE FIRE <span>SUPPORT</span>
+  </div>
+
+  <a href="index.html" class="telegram">
+    Website
+  </a>
+</header>
+
+<main class="form-page">
+
+  <div class="form-container">
+
+    <div class="badge">
+      ADMIN PANEL
+    </div>
+
+    <h1>
+      Ticket <span>Management</span>
+    </h1>
+
+    <p class="form-intro">
+      Enter a Ticket ID to manage the ticket.
+    </p>
+
+    <div class="admin-search">
+
+      <label>Ticket ID</label>
+
+      <input
+        type="text"
+        id="adminTicketId"
+        placeholder="Example: FF-20261001-ABC123"
+      >
+
+      <button
+        type="button"
+        id="loadTicketBtn"
+        class="btn primary submit-btn"
+      >
+        Load Ticket
+      </button>
+
+    </div>
+
+    <div id="adminMessage"></div>
+
+    <div id="adminTicket" class="admin-ticket" style="display:none;">
+
+      <h2>Ticket Information</h2>
+
+      <div id="ticketInformation"></div>
+
+      <hr>
+
+      <h2>Update Ticket</h2>
+
+      <label>Ticket Status</label>
+
+      <select id="adminStatus">
+        <option value="Open">Open</option>
+        <option value="Processing">Processing</option>
+        <option value="Resolved">Resolved</option>
+        <option value="Closed">Closed</option>
+      </select>
+
+      <label>Payment Status</label>
+
+      <select id="adminPaymentStatus">
+        <option value="Pending">Pending</option>
+        <option value="Verified">Verified</option>
+        <option value="Rejected">Rejected</option>
+      </select>
+
+      <button
+        type="button"
+        id="updateTicketBtn"
+        class="btn primary submit-btn"
+      >
+        Save Ticket Update
+      </button>
+
+      <hr>
+
+      <h2>Reply to User</h2>
+
+      <textarea
+        id="adminReplyMessage"
+        rows="6"
+        placeholder="Write your reply to the user..."
+      ></textarea>
+
+      <button
+        type="button"
+        id="sendAdminReplyBtn"
+        class="btn primary submit-btn"
+      >
+        Send Reply
+      </button>
+
+    </div>
+
+  </div>
+
+</main>
+
+<script src="admin.js"></script>
+
+</body>
+</html>
