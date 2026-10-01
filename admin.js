@@ -224,17 +224,20 @@ document
       );
 
 
-    } catch (error) {
+} catch (error) {
 
-      console.error(error);
+  console.error("LOAD TICKET ERROR:", error);
 
-      adminMessage(
-        "Unable to connect to the server.",
-        "error"
-      );
+  adminMessage(
+    "Error: " + error.message,
+    "error"
+  );
 
-    }
+  alert("LOAD TICKET ERROR:\n\n" + error.message);
 
+}
+
+  
   });
 
 
