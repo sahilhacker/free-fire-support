@@ -302,25 +302,65 @@ if (trackForm) {
 
       result.innerHTML = `
         <div class="ticket-result">
+
           <h2>Ticket Found</h2>
 
-          <p><strong>Ticket ID:</strong>
-          ${escapeHtml(ticket.ticketId || ticket["Ticket ID"] || ticketId)}</p>
+          <p>
+            <strong>Ticket ID:</strong>
+            ${escapeHtml(ticket.ticketId || "")}
+          </p>
 
-          <p><strong>Status:</strong>
-          ${escapeHtml(ticket.status || ticket["Status"] || "Pending")}</p>
+          <p>
+            <strong>Status:</strong>
+            ${escapeHtml(ticket.ticketStatus || "Pending")}
+          </p>
 
-          <p><strong>Payment Status:</strong>
-          ${escapeHtml(ticket.paymentStatus || ticket["Payment Status"] || "Pending")}</p>
+          <p>
+            <strong>Payment Status:</strong>
+            ${escapeHtml(ticket.paymentStatus || "Pending")}
+          </p>
 
-          <p><strong>Category:</strong>
-          ${escapeHtml(ticket.category || ticket["Category"] || "")}</p>
+          <p>
+            <strong>Telegram:</strong>
+            ${escapeHtml(ticket.telegramUsername || "")}
+          </p>
 
-          <p><strong>Subject:</strong>
-          ${escapeHtml(ticket.subject || ticket["Subject"] || "")}</p>
+          <p>
+            <strong>Phone:</strong>
+            ${escapeHtml(ticket.phone || "")}
+          </p>
 
-          <p><strong>Complaint:</strong>
-          ${escapeHtml(ticket.complaint || ticket["Complaint"] || "")}</p>
+          <p>
+            <strong>In-Game Name:</strong>
+            ${escapeHtml(ticket.inGameName || "")}
+          </p>
+
+          <p>
+            <strong>Player UID:</strong>
+            ${escapeHtml(ticket.playerUID || "")}
+          </p>
+
+          <p>
+            <strong>Category:</strong>
+            ${escapeHtml(ticket.category || "")}
+          </p>
+
+          <p>
+            <strong>Subject:</strong>
+            ${escapeHtml(ticket.subject || "")}
+          </p>
+
+          <div class="ticket-complaint">
+            <strong>Complaint Details:</strong>
+
+            <div class="complaint-text">
+              ${escapeHtml(
+                ticket.complaintDetails ||
+                "No complaint details found."
+              )}
+            </div>
+          </div>
+
         </div>
       `;
 
@@ -332,7 +372,6 @@ if (trackForm) {
     }
   });
 }
-
 
 /* =========================
    SECURITY
