@@ -410,7 +410,18 @@ document
     }
 
   });
+function adminMessage(message, type = "info") {
 
+  const box =
+    document.getElementById("adminMessage");
+
+  if (!box) return;
+
+  box.textContent = message;
+
+  box.className =
+    "form-message " + type;
+}
 
 function escapeAdmin(value) {
 
