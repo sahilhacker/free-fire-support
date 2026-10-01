@@ -85,7 +85,7 @@ onAuthStateChanged(auth, (user) => {
   }
 
 });
-
+document.addEventListener("DOMContentLoaded", () => {
 
 /* =========================
    LOAD TICKET
@@ -436,3 +436,4 @@ function escapeAdmin(value) {
 
   return div.innerHTML;
 }
+});
