@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Ticket - Free Fire Support</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">FREE FIRE <span>SUPPORT</span></div>
+  <a href="index.html" class="telegram">Home</a>
+</header>
+
+<main class="form-page">
+
+  <div class="form-container">
+
+    <div class="badge">NEW SUPPORT TICKET</div>
+
+    <h1>Create Your <span>Ticket</span></h1>
+
+    <p class="form-intro">
+      Enter your information carefully. Telegram username and phone number
+      are mandatory.
+    </p>
+
+    <form id="ticketForm">
+
+      <label>Telegram Username *</label>
+      <input
+        type="text"
+        id="telegram"
+        placeholder="@username"
+        required
+      >
+
+      <label>Phone Number *</label>
+      <input
+        type="tel"
+        id="phone"
+        placeholder="Enter phone number"
+        required
+      >
+
+      <label>In-Game Name</label>
+      <input
+        type="text"
+        id="gameName"
+        placeholder="Your Free Fire name"
+      >
+
+      <label>Player UID</label>
+      <input
+        type="text"
+        id="uid"
+        placeholder="Your player UID"
+      >
+
+      <label>Email Address</label>
+      <input
+        type="email"
+        id="email"
+        placeholder="Your email"
+      >
+
+      <label>Complaint Category *</label>
+      <select id="category" required>
+        <option value="">Select category</option>
+        <option value="Double Unsubscribe">Double Unsubscribe</option>
+        <option value="Account Recovery">Account Recovery</option>
+        <option value="Bind / Email Issue">Bind / Email Issue</option>
+        <option value="OTP Issue">OTP Issue</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label>Subject *</label>
+      <input
+        type="text"
+        id="subject"
+        placeholder="Short description of your issue"
+        required
+      >
+
+      <label>Complaint Details *</label>
+      <textarea
+        id="complaint"
+        rows="8"
+        placeholder="Explain your problem in detail..."
+        required
+      ></textarea>
+
+      <div class="upload-box">
+        <h3>Complaint Photos</h3>
+        <p>Maximum 2 MB per photo. Multiple photos allowed.</p>
+        <input
+          type="file"
+          id="photos"
+          accept="image/jpeg,image/png,image/webp"
+          multiple
+        >
+      </div>
+
+      <div class="upload-box">
+        <h3>Complaint Videos</h3>
+        <p>Maximum 25 MB per video. MP4/MKV allowed.</p>
+        <input
+          type="file"
+          id="videos"
+          accept="video/mp4,video/x-matroska"
+          multiple
+        >
+      </div>
+
+      <div class="payment-notice">
+        <h3>Payment Required</h3>
+        <p>
+          A service payment of <strong>₹800</strong> is required before
+          submitting your ticket.
+        </p>
+
+        <a href="payment.html" class="btn primary">
+          Make Payment
+        </a>
+      </div>
+
+      <div class="upload-box">
+        <h3>Payment Screenshot *</h3>
+        <p>Upload the screenshot of your ₹800 payment.</p>
+
+        <input
+          type="file"
+          id="paymentScreenshot"
+          accept="image/jpeg,image/png,image/webp"
+          required
+        >
+      </div>
+
+      <div id="formMessage"></div>
+
+      <button type="submit" id="submitBtn" class="btn primary submit-btn">
+        Submit Ticket
+      </button>
+
+    </form>
+
+  </div>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
