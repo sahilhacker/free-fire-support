@@ -1,8 +1,58 @@
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+
+import {
+  getAuth,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDY-Y_7WncONJBJ1ZZPxQDatk2QwOR_z6k",
+  authDomain: "free-fire-support-510205.firebaseapp.com",
+  projectId: "free-fire-support-510205",
+  storageBucket: "free-fire-support-510205.firebasestorage.app",
+  messagingSenderId: "963006956082",
+  appId: "1:963006956082:web:39f5fd359a289f241a322b",
+  measurementId: "G-YXJ8RQS5CP"
+};
+
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+const ADMIN_EMAIL =
+  "sksahilamin2019@gmail.com";
+
 const ADMIN_API_URL =
   "https://script.google.com/macros/s/AKfycbx46FxCXfS_XOCOEWoETlb9Me2Qcyau005Olwmw8DK-J6VN2IoQa2fH61X7Thba9BHc/exec";
 
 
+async function getAdminToken() {
+
+  const user = auth.currentUser;
+
+  if (!user) {
+    throw new Error("Admin login required.");
+  }
+
+  if (
+    user.email?.toLowerCase() !==
+    ADMIN_EMAIL.toLowerCase()
+  ) {
+    throw new Error("Unauthorized admin account.");
+  }
+
+  return await user.getIdToken();
+}
+
+
 async function adminPost(data) {
+
+  const idToken = await getAdminToken();
+
+  data.idToken = idToken;
 
   const response = await fetch(ADMIN_API_URL, {
     method: "POST",
@@ -18,18 +68,23 @@ async function adminPost(data) {
 }
 
 
-function adminMessage(message, type = "info") {
+onAuthStateChanged(auth, (user) => {
 
-  const box =
-    document.getElementById("adminMessage");
+  if (!user) {
+    window.location.href =
+      "admin-login.html";
+    return;
+  }
 
-  if (!box) return;
+  if (
+    user.email?.toLowerCase() !==
+    ADMIN_EMAIL.toLowerCase()
+  ) {
+    auth.signOut();
+    return;
+  }
 
-  box.textContent = message;
-
-  box.className =
-    "form-message " + type;
-}
+});
 
 
 /* =========================
