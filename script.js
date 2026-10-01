@@ -149,16 +149,18 @@ if (ticketForm) {
       /* Create ticket first */
 
       const ticketResponse = await postJSON({
-        action: "submitTicket",
-        telegram: telegram,
-        phone: phone,
-        gameName: gameName,
-        uid: uid,
-        email: email,
-        category: category,
-        subject: subject,
-        complaint: complaint
-      });
+  action: "submitTicket",
+  data: {
+    telegram: telegram,
+    phone: phone,
+    gameName: gameName,
+    uid: uid,
+    email: email,
+    category: category,
+    subject: subject,
+    complaint: complaint
+  }
+});
 
       if (
         !ticketResponse.success ||
@@ -239,15 +241,16 @@ if (ticketForm) {
 async function uploadFile(file, ticketId, mediaType) {
   const base64Data = await fileToBase64(file);
 
-  const response = await postJSON({
-    action: "uploadMedia",
+ const response = await postJSON({
+  action: "uploadMedia",
+  data: {
     ticketId: ticketId,
     fileName: file.name,
     mimeType: file.type || "application/octet-stream",
     base64Data: base64Data,
     mediaType: mediaType
-  });
-
+  }
+});
   if (!response.success) {
     throw new Error(
       response.message ||
