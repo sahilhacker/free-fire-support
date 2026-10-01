@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Ticket - Free Fire Support</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">FREE FIRE <span>SUPPORT</span></div>
+  <a href="index.html" class="telegram">Home</a>
+</header>
+
+<main class="form-page">
+
+  <div class="form-container">
+
+    <div class="badge">TICKET TRACKING</div>
+
+    <h1>Check Your <span>Ticket</span></h1>
+
+    <p class="form-intro">
+      Enter your Ticket ID and phone number to view your ticket.
+    </p>
+
+    <form id="trackForm">
+
+      <label>Ticket ID *</label>
+      <input
+        type="text"
+        id="trackTicketId"
+        placeholder="Example: FF-XXXXXXXX"
+        required
+      >
+
+      <label>Phone Number *</label>
+      <input
+        type="tel"
+        id="trackPhone"
+        placeholder="Phone number used for the ticket"
+        required
+      >
+
+      <button type="submit" class="btn primary submit-btn">
+        Find Ticket
+      </button>
+
+    </form>
+
+    <div id="ticketResult"></div>
+
+  </div>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
