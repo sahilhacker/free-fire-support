@@ -602,3 +602,58 @@ form textarea {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
+/* =========================
+   ADMIN PANEL
+========================= */
+
+.admin-search,
+.admin-ticket {
+  background: #101010;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 25px;
+  margin-top: 20px;
+}
+
+.admin-ticket h2 {
+  margin-bottom: 18px;
+  color: #ff9d00;
+}
+
+.admin-ticket p {
+  padding: 10px 0;
+  border-bottom: 1px solid #1f1f1f;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+.admin-ticket strong {
+  color: #fff;
+}
+
+.admin-ticket hr {
+  border: 0;
+  border-top: 1px solid #292929;
+  margin: 30px 0;
+}
+
+.admin-ticket select,
+.admin-ticket textarea {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 15px;
+  background: #080808;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 7px;
+}
+
+.admin-ticket textarea {
+  resize: vertical;
+}
+
+.admin-ticket label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
