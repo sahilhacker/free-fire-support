@@ -117,23 +117,10 @@ document
 
     try {
 
-      const response =
-        await adminPost({
-
-          action: "getTicket",
-
-          ticketId: ticketId,
-
-          /*
-           * Admin loading does not yet bypass
-           * phone verification.
-           *
-           * We will add proper admin authentication
-           * before this is exposed publicly.
-           */
-
-          phone: ""
-        });
+     const response = await adminPost({
+  action: "adminGetTicket",
+  ticketId: ticketId
+});
 
 
       if (!response.success) {
