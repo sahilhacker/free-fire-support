@@ -1736,3 +1736,65 @@ body {
     padding: 10px;
   }
 }
+/* FINAL FIX — COMPACT CHAT BUBBLES */
+
+.conversation {
+  width: 100%;
+  min-width: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.chat-message {
+  box-sizing: border-box;
+  min-width: 0;
+  width: auto;
+  max-width: 72% !important;
+
+  padding: 7px 10px !important;
+  margin: 0;
+
+  line-height: 1.4;
+  font-size: 13px;
+
+  white-space: pre-wrap !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+
+  overflow: hidden;
+  text-align: left;
+}
+
+.chat-message.user {
+  align-self: flex-end;
+  background: #ff9d00;
+  color: #000;
+}
+
+.chat-message.admin {
+  align-self: flex-start;
+  background: #f1f1f1;
+  color: #111;
+}
+
+.chat-label {
+  display: block;
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 800;
+  margin-bottom: 3px;
+}
+
+#conversation {
+  min-width: 0;
+}
+
+#conversation .chat-message {
+  min-width: 0;
+  max-width: 72% !important;
+}
+
+#conversation .chat-message * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
