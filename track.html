@@ -14,110 +14,126 @@
   <a href="index.html" class="telegram">Home</a>
 </header>
 
-<main class="form-page">
+<main class="track-page">
 
-  <div class="form-container">
+  <div class="track-container">
 
     <div class="badge">TICKET TRACKING</div>
 
     <h1>Check Your <span>Ticket</span></h1>
 
-    <p class="form-intro">
-      Enter your Ticket ID and phone number to view your ticket and conversation.
+    <p class="track-intro">
+      Enter your Ticket ID and phone number to view your ticket status,
+      payment status and support conversation.
     </p>
 
-    <form id="trackForm">
+    <section class="track-search-card">
 
-      <label>Ticket ID *</label>
+      <h2>Find Existing Ticket</h2>
 
-      <input
-        type="text"
-        id="trackTicketId"
-        placeholder="Example: FF-20261001-ABC123"
-        required
-      >
+      <p class="track-muted">
+        Use the same phone number that was submitted with your ticket.
+      </p>
 
-      <label>Phone Number *</label>
+      <form id="trackForm">
 
-      <input
-        type="tel"
-        id="trackPhone"
-        placeholder="Phone number used for the ticket"
-        required
-      >
+        <label>Ticket ID *</label>
 
-      <button
-        type="submit"
-        class="btn primary submit-btn"
-      >
-        Find Ticket
-      </button>
+        <input
+          type="text"
+          id="trackTicketId"
+          placeholder="Example: FF-48291"
+          required
+        >
 
-    </form>
+        <label>Phone Number *</label>
+
+        <input
+          type="tel"
+          id="trackPhone"
+          placeholder="Phone number used for the ticket"
+          required
+        >
+
+        <button
+          type="submit"
+          class="btn primary submit-btn"
+        >
+          Find Ticket
+        </button>
+
+      </form>
+
+    </section>
 
     <div id="ticketResult"></div>
 
-    <div id="conversationBox" class="conversation-box" style="display:none;">
 
-  <h2>Support Conversation</h2>
-
-  <div id="conversation" class="conversation"></div>
-
-  <textarea
-    id="userReplyMessage"
-    rows="5"
-    placeholder="Write a message to support..."
-  ></textarea>
-
-  <button
-    type="button"
-    class="btn primary submit-btn"
-    onclick="sendUserReply()"
-  >
-    Send Reply
-  </button>
-
-  <div id="message4"></div>
-
-</div>
-
-    <!-- CONVERSATION -->
-
-    <div
+    <section
       id="conversationBox"
       class="conversation-box"
       style="display:none;"
     >
 
-      <h2>Conversation with Support</h2>
+      <div class="conversation-header">
+        <div>
+          <div class="badge">SUPPORT CHAT</div>
+          <h2>Ticket Conversation</h2>
+        </div>
+      </div>
 
       <div
         id="conversation"
         class="conversation"
       ></div>
 
+      <div class="reply-box">
+
+        <textarea
+          id="userReplyMessage"
+          rows="3"
+          placeholder="Write a message to support..."
+        ></textarea>
+
+        <button
+          type="button"
+          class="btn primary reply-btn"
+          onclick="sendUserReply()"
+        >
+          Send Reply
+        </button>
+
+      </div>
+
       <div id="message4"></div>
 
-      <textarea
-        id="userReplyMessage"
-        rows="5"
-        placeholder="Write your message to support..."
-      ></textarea>
-
-      <button
-        type="button"
-        id="sendUserReplyBtn"
-        class="btn primary submit-btn"
-        onclick="sendUserReply()"
-      >
-        Send Reply
-      </button>
-
-    </div>
+    </section>
 
   </div>
 
 </main>
+
+<footer>
+
+  <div class="footer-links">
+    <a href="https://t.me/panther408" target="_blank">
+      Contact @panther408
+    </a>
+
+    <a href="https://t.me/GarenaEmail_doubleunsub" target="_blank">
+      Proof Channel
+    </a>
+
+    <a href="index.html">
+      Home
+    </a>
+  </div>
+
+  <p class="copyright">
+    © 2026 Free Fire Customer Support Double Unsubscribe
+  </p>
+
+</footer>
 
 <script src="script.js"></script>
 
