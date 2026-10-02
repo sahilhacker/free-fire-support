@@ -1059,3 +1059,20 @@ form textarea {
   }
 
 }
+.chat-message {
+  width: fit-content !important;
+  max-width: 55% !important;
+  padding: 7px 10px !important;
+  margin: 0 !important;
+  font-size: 12px !important;
+  line-height: 1.35 !important;
+  border-radius: 9px !important;
+}
+
+.chat-message.user {
+  align-self: flex-end !important;
+}
+
+.chat-message.admin {
+  align-self: flex-start !important;
+}
