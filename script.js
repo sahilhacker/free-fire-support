@@ -790,10 +790,7 @@ async function sendUserReply() {
 ========================= */
 
 const trackForm =
-  document.getElementById(
-    "trackForm"
-  );
-
+  document.getElementById("trackForm");
 
 if (trackForm) {
 
@@ -803,13 +800,11 @@ if (trackForm) {
 
       event.preventDefault();
 
-
       const ticketId =
         document
           .getElementById("trackTicketId")
           .value
           .trim();
-
 
       const phone =
         document
@@ -817,33 +812,31 @@ if (trackForm) {
           .value
           .trim();
 
-
       const result =
-        document.getElementById(
-          "ticketResult"
-        );
+        document.getElementById("ticketResult");
 
+      const conversationBox =
+        document.getElementById("conversationBox");
 
       result.innerHTML =
         '<p class="loading">Searching ticket...</p>';
 
+      if (conversationBox) {
+        conversationBox.style.display = "none";
+      }
 
       try {
 
         const response =
           await postJSON({
 
-            action:
-              "getTicket",
+            action: "getTicket",
 
-            ticketId:
-              ticketId,
+            ticketId: ticketId,
 
-            phone:
-              phone
+            phone: phone
 
           });
-
 
         if (!response.success) {
 
@@ -856,13 +849,10 @@ if (trackForm) {
             </p>`;
 
           return;
-
         }
-
 
         const ticket =
           response.ticket;
-
 
         result.innerHTML = `
 
@@ -872,24 +862,20 @@ if (trackForm) {
 
             <p>
               <strong>Ticket ID:</strong>
-              ${escapeHtml(
-                ticket.ticketId || ""
-              )}
+              ${escapeHtml(ticket.ticketId || "")}
             </p>
 
             <p>
               <strong>Status:</strong>
               ${escapeHtml(
-                ticket.ticketStatus ||
-                "Pending"
+                ticket.ticketStatus || "Pending"
               )}
             </p>
 
             <p>
               <strong>Payment Status:</strong>
               ${escapeHtml(
-                ticket.paymentStatus ||
-                "Pending"
+                ticket.paymentStatus || "Pending"
               )}
             </p>
 
@@ -956,6 +942,90 @@ if (trackForm) {
 
         `;
 
+
+        /* =========================
+           LOAD CONVERSATION
+        ========================= */
+
+        const conversation =
+          document.getElementById(
+            "conversation"
+          );
+
+        if (conversation) {
+
+          conversation.innerHTML = "";
+
+          if (
+            ticket.conversation &&
+            ticket.conversation.length > 0
+          ) {
+
+            ticket.conversation.forEach(
+              item => {
+
+                const msg =
+                  document.createElement("div");
+
+                const sender =
+                  String(
+                    item.sender || ""
+                  ).toLowerCase();
+
+                const isAdmin =
+                  sender === "admin" ||
+                  sender === "support";
+
+                msg.className =
+                  "chat-message " +
+                  (isAdmin
+                    ? "admin"
+                    : "user");
+
+                msg.innerHTML = `
+
+                  <div class="chat-label">
+                    ${isAdmin ? "Support" : "You"}
+                  </div>
+
+                  ${escapeHtml(
+                    item.message || ""
+                  )}
+
+                `;
+
+                conversation.appendChild(msg);
+
+              }
+            );
+
+          } else {
+
+            conversation.innerHTML = `
+
+              <div class="chat-message admin">
+
+                <div class="chat-label">
+                  Support
+                </div>
+
+                No messages yet. You can send a message below.
+
+              </div>
+
+            `;
+
+          }
+
+        }
+
+
+        if (conversationBox) {
+
+          conversationBox.style.display =
+            "block";
+
+        }
 
       } catch (error) {
 
