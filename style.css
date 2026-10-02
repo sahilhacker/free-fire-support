@@ -865,6 +865,12 @@ form textarea {
   padding: 65px 20px 80px;
 }
 
+.track-page {
+  min-height: calc(100vh - 70px);
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #0d47c7, #1976d2);
+}
+
 .track-container {
   max-width: 850px;
   margin: auto;
