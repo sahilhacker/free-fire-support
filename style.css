@@ -530,39 +530,141 @@ form textarea {
 
 
 /* =========================
-   TRACK RESULT
+   TRACK RESULT - PROTOTYPE
 ========================= */
 
 #ticketResult {
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
 .ticket-result {
   background: #101010;
-  border: 1px solid #222;
-  border-radius: 12px;
-  padding: 25px;
+  border: 1px solid #292929;
+  border-radius: 14px;
+  padding: 22px;
 }
 
 .ticket-result h2 {
-  color: #ff9d00;
   text-align: left;
-  margin-bottom: 20px;
+  color: #ff9d00;
+  margin-bottom: 18px;
 }
 
 .ticket-result p {
   color: #aaa;
-  line-height: 1.6;
-  padding: 10px 0;
+  line-height: 1.55;
+  padding: 11px 0;
   border-bottom: 1px solid #1f1f1f;
 }
 
-.ticket-result p:last-child {
+.ticket-result p:last-of-type {
   border-bottom: none;
 }
 
 .ticket-result strong {
   color: #fff;
+}
+
+.ticket-complaint {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid #292929;
+}
+
+.ticket-complaint > strong {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.complaint-text {
+  background: #080808;
+  border: 1px solid #292929;
+  border-radius: 10px;
+  padding: 15px;
+  color: #aaa;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================
+   CONVERSATION - PROTOTYPE
+========================= */
+
+.conversation-box {
+  margin-top: 20px;
+  padding: 22px;
+  background: #101010;
+  border: 1px solid #292929;
+  border-radius: 14px;
+}
+
+.conversation-box h2 {
+  text-align: left;
+  color: #ff9d00;
+  margin-bottom: 18px;
+}
+
+.conversation {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 18px;
+  max-height: 450px;
+  overflow-y: auto;
+}
+
+.chat-message {
+  max-width: 78%;
+  padding: 11px 14px;
+  border-radius: 12px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 14px;
+}
+
+.chat-message.user {
+  align-self: flex-end;
+  background: #ff9d00;
+  color: #000;
+}
+
+.chat-message.admin {
+  align-self: flex-start;
+  background: #1b1b1b;
+  border: 1px solid #333;
+  color: #ddd;
+}
+
+.chat-label {
+  font-size: 11px;
+  font-weight: 800;
+  margin-bottom: 5px;
+  opacity: .7;
+}
+
+#userReplyMessage {
+  width: 100%;
+  min-height: 100px;
+  box-sizing: border-box;
+  resize: vertical;
+  margin-top: 5px;
+  padding: 13px;
+  background: #080808;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 9px;
+  outline: none;
+}
+
+#userReplyMessage:focus {
+  border-color: #ff9d00;
+}
+
+.conversation-box .submit-btn {
+  margin-top: 12px;
 }
 
 
