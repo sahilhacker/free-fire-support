@@ -1117,3 +1117,172 @@ form textarea {
 .chat-message.admin {
   align-self: flex-start !important;
 }
+/* =========================================
+   FINAL TRACK PAGE OVERRIDE
+========================================= */
+
+html,
+body {
+  background: #0d47c7 !important;
+  min-height: 100%;
+}
+
+body {
+  background: #0d47c7 !important;
+}
+
+.track-page {
+  min-height: calc(100vh - 70px);
+  padding: 55px 20px;
+  background: linear-gradient(135deg, #0d47c7, #1976d2) !important;
+}
+
+.track-container {
+  max-width: 1050px;
+  margin: auto;
+}
+
+/* Search card */
+.track-search-card {
+  background: #101010;
+  border: 1px solid #222;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.track-search-card h2 {
+  color: #ff9d00;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.track-muted {
+  color: #888;
+  margin-bottom: 18px;
+}
+
+/* Ticket + conversation side by side */
+.track-layout {
+  display: grid !important;
+  grid-template-columns: 320px minmax(0, 1fr) !important;
+  gap: 18px;
+  align-items: start;
+  margin-top: 20px;
+}
+
+/* Ticket information */
+.track-info-card,
+.conversation-box {
+  background: #101010 !important;
+  border: 1px solid #222;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.track-info-card h2,
+.conversation-box h2 {
+  text-align: left;
+  color: #ff9d00;
+  margin-bottom: 14px;
+}
+
+/* Conversation area */
+.conversation-box {
+  min-width: 0;
+}
+
+.conversation {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 7px !important;
+  margin-bottom: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 4px;
+}
+
+/* IMPORTANT: compact bubbles */
+.conversation .chat-message {
+  width: auto !important;
+  max-width: 75% !important;
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 7px 11px !important;
+  margin: 0 !important;
+  border-radius: 10px !important;
+  line-height: 1.3 !important;
+  font-size: 13px !important;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  box-sizing: border-box;
+}
+
+.conversation .chat-message.user {
+  align-self: flex-end !important;
+  background: #2563eb !important;
+  color: #fff !important;
+}
+
+.conversation .chat-message.admin {
+  align-self: flex-start !important;
+  background: #1c2533 !important;
+  color: #f1f5f9 !important;
+}
+
+.conversation .chat-label {
+  font-size: 10px !important;
+  margin-bottom: 2px !important;
+  line-height: 1.1 !important;
+  opacity: .7;
+}
+
+/* Reply area */
+.reply-box {
+  margin-top: 10px;
+}
+
+#userReplyMessage {
+  width: 100% !important;
+  min-height: 58px !important;
+  height: 58px;
+  max-height: 100px;
+  padding: 9px 11px !important;
+  margin: 0 0 8px !important;
+  background: #080808 !important;
+  color: #fff !important;
+  border: 1px solid #333 !important;
+  border-radius: 9px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.reply-btn {
+  width: 100%;
+}
+
+/* Ticket result */
+#ticketResult {
+  margin-top: 0;
+}
+
+.ticket-result {
+  margin: 0;
+}
+
+/* Desktop → mobile */
+@media (max-width: 800px) {
+
+  .track-page {
+    padding: 40px 15px;
+  }
+
+  .track-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .conversation .chat-message {
+    max-width: 82% !important;
+  }
+
+}
