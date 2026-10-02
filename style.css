@@ -1798,33 +1798,68 @@ body {
   max-width: 100%;
   box-sizing: border-box;
 }
-/* FINAL CHAT TEXT COLOR FIX */
+/* CHAT BUBBLE FINAL OVERRIDE */
 
+#conversation .chat-message,
+#conversation .chat-message.user,
+#conversation .chat-message.admin {
+  font-family: inherit !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  white-space: pre-wrap !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* USER MESSAGE - BLUE */
 #conversation .chat-message.user {
-  background: #ff9d00 !important;
-  color: #000000 !important;
-  -webkit-text-fill-color: #000000 !important;
+  background: #2563eb !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  align-self: flex-end !important;
+  max-width: 72% !important;
+  padding: 8px 11px !important;
+  border-radius: 10px !important;
 }
 
+/* USER LABEL */
 #conversation .chat-message.user .chat-label {
-  color: #000000 !important;
-  -webkit-text-fill-color: #000000 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
+/* SUPPORT MESSAGE - LIGHT */
 #conversation .chat-message.admin {
   background: #f1f1f1 !important;
   color: #111111 !important;
   -webkit-text-fill-color: #111111 !important;
+  align-self: flex-start !important;
+  max-width: 72% !important;
+  padding: 8px 11px !important;
+  border-radius: 10px !important;
 }
 
+/* SUPPORT LABEL */
 #conversation .chat-message.admin .chat-label {
   color: #111111 !important;
   -webkit-text-fill-color: #111111 !important;
 }
 
-/* Make sure dynamically inserted text cannot inherit a hidden color */
+/* Force the actual text node color */
 #conversation .chat-message.user *,
 #conversation .chat-message.admin * {
-  color: inherit !important;
-  -webkit-text-fill-color: inherit !important;
+  font-family: inherit !important;
+}
+
+/* Prevent invisible/transparent text */
+#conversation .chat-message.user {
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+#conversation .chat-message.admin {
+  text-shadow: none !important;
+  opacity: 1 !important;
 }
