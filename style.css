@@ -763,62 +763,97 @@ form textarea {
    TICKET CONVERSATION
 ========================= */
 
-.conversation-box {
+.track-layout {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 20px;
   margin-top: 25px;
-  padding-top: 25px;
-  border-top: 1px solid rgba(128,128,128,.25);
+  align-items: start;
 }
 
+.track-info-card,
+.conversation-box {
+  background: #101010;
+  border: 1px solid #222;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.track-info-card h2,
 .conversation-box h2 {
+  text-align: left;
+  color: #ff9d00;
   margin-bottom: 15px;
 }
 
 .conversation {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 15px;
+  gap: 8px;
+  margin-bottom: 14px;
+  max-height: 430px;
+  overflow-y: auto;
 }
 
 .chat-message {
-  max-width: 85%;
-  padding: 12px 14px;
-  border-radius: 12px;
-  line-height: 1.5;
+  width: fit-content;
+  max-width: 72%;
+  padding: 9px 12px;
+  border-radius: 10px;
+  line-height: 1.35;
+  font-size: 13px;
   white-space: pre-wrap;
-  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .chat-message.user {
   align-self: flex-end;
   background: #2563eb;
-  color: white;
+  color: #fff;
 }
 
 .chat-message.admin {
   align-self: flex-start;
-  background: #eef2f7;
-  color: #172033;
+  background: #1c2533;
+  color: #f1f5f9;
 }
 
 .chat-label {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
-  margin-bottom: 5px;
-  opacity: .75;
+  margin-bottom: 3px;
+  opacity: .7;
+}
+
+.reply-box {
+  margin-top: 12px;
 }
 
 #userReplyMessage {
   width: 100%;
+  min-height: 65px;
+  max-height: 120px;
   box-sizing: border-box;
   resize: vertical;
-  margin-top: 10px;
+  margin: 0 0 8px;
+  padding: 10px 12px;
+  background: #080808;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 9px;
 }
 
-@media (prefers-color-scheme: dark) {
-  .chat-message.admin {
-    background: #1c2533;
-    color: #f1f5f9;
+.reply-btn {
+  width: 100%;
+}
+
+@media (max-width: 800px) {
+  .track-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .chat-message {
+    max-width: 82%;
   }
 }
 /* =========================
