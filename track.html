@@ -23,20 +23,22 @@
     <h1>Check Your <span>Ticket</span></h1>
 
     <p class="form-intro">
-      Enter your Ticket ID and phone number to view your ticket.
+      Enter your Ticket ID and phone number to view your ticket and conversation.
     </p>
 
     <form id="trackForm">
 
       <label>Ticket ID *</label>
+
       <input
         type="text"
         id="trackTicketId"
-        placeholder="Example: FF-XXXXXXXX"
+        placeholder="Example: FF-20261001-ABC123"
         required
       >
 
       <label>Phone Number *</label>
+
       <input
         type="tel"
         id="trackPhone"
@@ -44,13 +46,50 @@
         required
       >
 
-      <button type="submit" class="btn primary submit-btn">
+      <button
+        type="submit"
+        class="btn primary submit-btn"
+      >
         Find Ticket
       </button>
 
     </form>
 
     <div id="ticketResult"></div>
+
+    <!-- CONVERSATION -->
+
+    <div
+      id="conversationBox"
+      class="conversation-box"
+      style="display:none;"
+    >
+
+      <h2>Conversation with Support</h2>
+
+      <div
+        id="conversation"
+        class="conversation"
+      ></div>
+
+      <div id="message4"></div>
+
+      <textarea
+        id="userReplyMessage"
+        rows="5"
+        placeholder="Write your message to support..."
+      ></textarea>
+
+      <button
+        type="button"
+        id="sendUserReplyBtn"
+        class="btn primary submit-btn"
+        onclick="sendUserReply()"
+      >
+        Send Reply
+      </button>
+
+    </div>
 
   </div>
 
