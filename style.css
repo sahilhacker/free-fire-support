@@ -1476,3 +1476,263 @@ body {
   }
 
 }
+/* =========================
+   FINAL TRACK TICKET UI
+========================= */
+
+.track-page {
+  min-height: calc(100vh - 70px);
+  background: #080808;
+  color: #fff;
+  padding: 55px 20px 70px;
+}
+
+.track-container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.track-container > h1 {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.track-intro {
+  text-align: center;
+  color: #999;
+  max-width: 650px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+}
+
+/* Search card */
+
+.track-search-card {
+  background: #101010;
+  border: 1px solid #222;
+  border-radius: 14px;
+  padding: 25px;
+  max-width: 650px;
+  margin: 0 auto 25px;
+}
+
+.track-search-card h2 {
+  text-align: left;
+  color: #ff9d00;
+  margin-bottom: 8px;
+}
+
+.track-muted {
+  color: #888;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.track-search-card form {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+/* Ticket information */
+
+#ticketResult {
+  margin-top: 25px;
+}
+
+.ticket-result {
+  background: #101010;
+  border: 1px solid #222;
+  border-radius: 14px;
+  padding: 22px;
+}
+
+.ticket-result h2 {
+  color: #ff9d00;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.ticket-result p {
+  color: #aaa;
+  padding: 8px 0;
+  border-bottom: 1px solid #222;
+  line-height: 1.5;
+}
+
+.ticket-result strong {
+  color: #fff;
+}
+
+/* Complaint details */
+
+.ticket-complaint {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #222;
+  color: #fff;
+}
+
+.complaint-text {
+  margin-top: 10px;
+  padding: 14px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 9px;
+  color: #111;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* =========================
+   CONVERSATION
+========================= */
+
+.conversation-box {
+  margin-top: 25px;
+  padding: 22px;
+  background: #101010;
+  border: 1px solid #222;
+  border-radius: 14px;
+}
+
+.conversation-header {
+  margin-bottom: 16px;
+}
+
+.conversation-header h2 {
+  color: #ff9d00;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+/* White conversation area */
+
+.conversation {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 14px;
+  min-height: 80px;
+  max-height: 420px;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  margin-bottom: 14px;
+}
+
+/* Compact message bubble */
+
+.chat-message {
+  width: fit-content;
+  max-width: min(72%, 600px);
+
+  padding: 8px 11px;
+  border-radius: 10px;
+
+  line-height: 1.4;
+  font-size: 13px;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+
+  box-sizing: border-box;
+}
+
+/* User message */
+
+.chat-message.user {
+  align-self: flex-end;
+  background: #ff9d00;
+  color: #000;
+}
+
+/* Support message */
+
+.chat-message.admin {
+  align-self: flex-start;
+  background: #f1f1f1;
+  color: #111;
+}
+
+/* Sender label */
+
+.chat-label {
+  font-size: 10px;
+  font-weight: 800;
+  margin-bottom: 3px;
+  opacity: .7;
+}
+
+/* Reply section */
+
+.reply-box {
+  background: #101010;
+  border: 1px solid #222;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+#userReplyMessage {
+  width: 100%;
+  min-height: 70px;
+  max-height: 150px;
+
+  box-sizing: border-box;
+  resize: vertical;
+
+  background: #080808;
+  color: #fff;
+
+  border: 1px solid #333;
+  border-radius: 8px;
+
+  padding: 11px;
+  line-height: 1.5;
+  font-family: inherit;
+}
+
+#userReplyMessage:focus {
+  outline: none;
+  border-color: #ff9d00;
+}
+
+.reply-btn {
+  margin-top: 9px;
+}
+
+/* Messages below reply box */
+
+#message4 {
+  margin-top: 10px;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .track-page {
+    padding: 40px 15px 55px;
+  }
+
+  .track-search-card,
+  .ticket-result,
+  .conversation-box {
+    padding: 18px;
+  }
+
+  .chat-message {
+    max-width: 85%;
+    font-size: 13px;
+  }
+
+  .conversation {
+    padding: 10px;
+  }
+}
