@@ -1798,3 +1798,33 @@ body {
   max-width: 100%;
   box-sizing: border-box;
 }
+/* FINAL CHAT TEXT COLOR FIX */
+
+#conversation .chat-message.user {
+  background: #ff9d00 !important;
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+#conversation .chat-message.user .chat-label {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+#conversation .chat-message.admin {
+  background: #f1f1f1 !important;
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+}
+
+#conversation .chat-message.admin .chat-label {
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+}
+
+/* Make sure dynamically inserted text cannot inherit a hidden color */
+#conversation .chat-message.user *,
+#conversation .chat-message.admin * {
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}
