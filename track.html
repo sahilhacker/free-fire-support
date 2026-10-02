@@ -441,50 +441,46 @@
 
     </section>
 
-    <div id="ticketResult"></div>
+<div class="track-layout">
 
+  <div id="ticketResult" class="track-info-card"></div>
 
-    <section
-      id="conversationBox"
-      class="conversation-box"
-      style="display:none;"
-    >
+  <section
+    id="conversationBox"
+    class="conversation-box"
+    style="display:none;"
+  >
 
-      <div class="conversation-header">
-        <div>
-          <div class="badge">SUPPORT CHAT</div>
-          <h2>Ticket Conversation</h2>
-        </div>
-      </div>
+    <div class="conversation-header">
+      <div class="badge">SUPPORT CHAT</div>
+      <h2>Ticket Conversation</h2>
+    </div>
 
-      <div
-        id="conversation"
-        class="conversation"
-      ></div>
+    <div id="conversation" class="conversation"></div>
 
-      <div class="reply-box">
+    <div class="reply-box">
 
-        <textarea
-          id="userReplyMessage"
-          rows="3"
-          placeholder="Write a message to support..."
-        ></textarea>
+      <textarea
+        id="userReplyMessage"
+        rows="3"
+        placeholder="Write a message to support..."
+      ></textarea>
 
-        <button
-          type="button"
-          class="btn primary reply-btn"
-          onclick="sendUserReply()"
-        >
-          Send Reply
-        </button>
+      <button
+        type="button"
+        class="btn primary reply-btn"
+        onclick="sendUserReply()"
+      >
+        Send Reply
+      </button>
 
-      </div>
+    </div>
 
-      <div id="message4"></div>
+    <div id="message4"></div>
 
-    </section>
+  </section>
 
-  </div>
+</div>
 
 </main>
 
