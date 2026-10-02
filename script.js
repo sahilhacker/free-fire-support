@@ -139,8 +139,9 @@ function slideMessage(
 ========================= */
 
 let createdTicketId = "";
-
 let submittedPhone = "";
+let trackedTicketId = "";
+let trackedPhone = "";
 
 
 /* =========================
@@ -678,7 +679,13 @@ async function sendUserReply() {
     messageBox.value.trim();
 
 
-  if (!createdTicketId) {
+  const activeTicketId =
+  createdTicketId || trackedTicketId;
+
+const activePhone =
+  submittedPhone || trackedPhone;
+
+if (!activeTicketId) {
 
     slideMessage(
       "message4",
@@ -710,12 +717,12 @@ async function sendUserReply() {
         action:
           "userReply",
 
-        ticketId:
-          createdTicketId,
+       ticketId:
+  activeTicketId,
 
-        phone:
-          submittedPhone,
-
+phone:
+  activePhone,
+        
         message:
           message
 
@@ -853,6 +860,9 @@ if (trackForm) {
 
         const ticket =
           response.ticket;
+        
+        trackedTicketId = ticket.ticketId || ticketId;
+trackedPhone = ticket.phone || phone;
 
         result.innerHTML = `
 
