@@ -657,3 +657,65 @@ form textarea {
   margin-bottom: 8px;
   font-weight: bold;
 }
+/* =========================
+   TICKET CONVERSATION
+========================= */
+
+.conversation-box {
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(128,128,128,.25);
+}
+
+.conversation-box h2 {
+  margin-bottom: 15px;
+}
+
+.conversation {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.chat-message {
+  max-width: 85%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.chat-message.user {
+  align-self: flex-end;
+  background: #2563eb;
+  color: white;
+}
+
+.chat-message.admin {
+  align-self: flex-start;
+  background: #eef2f7;
+  color: #172033;
+}
+
+.chat-label {
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  opacity: .75;
+}
+
+#userReplyMessage {
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+  margin-top: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .chat-message.admin {
+    background: #1c2533;
+    color: #f1f5f9;
+  }
+}
