@@ -1,154 +1,890 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Ticket - Free Fire Support</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Create Support Ticket - Free Fire Support</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+:root{
+  --bg:#080d1d;
+  --card:#111a2e;
+  --card2:#16213a;
+  --text:#f4f7ff;
+  --muted:#9da9c2;
+  --line:#263552;
+  --accent:#4d8dff;
+  --soft:#15233e;
+  --good:#20c878;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+}
+
+.ticket-page{
+  max-width:980px;
+  margin:auto;
+  padding:24px 18px 50px;
+}
+
+.ticket-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:24px;
+}
+
+.ticket-brand{
+  font-size:20px;
+  font-weight:800;
+}
+
+.ticket-badge{
+  font-size:11px;
+  padding:7px 10px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  color:var(--muted);
+}
+
+.intro{
+  background:linear-gradient(145deg,#101b31,#14213a);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:25px;
+  margin-bottom:18px;
+}
+
+.intro-label{
+  color:#5f99ff;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+.intro h1{
+  margin:8px 0;
+  font-size:30px;
+}
+
+.intro p{
+  color:var(--muted);
+  line-height:1.6;
+  margin:0;
+}
+
+.note{
+  margin-top:18px;
+  padding:14px;
+  background:#14233c;
+  border:1px solid #284268;
+  border-left:4px solid var(--accent);
+  border-radius:13px;
+  color:#dbe5f8;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.note strong{
+  display:block;
+  margin-bottom:4px;
+}
+
+.note a{
+  color:#5f99ff;
+}
+
+.steps{
+  display:flex;
+  gap:8px;
+  margin:16px 0;
+}
+
+.step{
+  height:7px;
+  flex:1;
+  background:#263552;
+  border-radius:99px;
+}
+
+.step.active{
+  background:var(--accent);
+}
+
+.slide{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:22px;
+}
+
+.slide.hidden{
+  display:none;
+}
+
+.slide h2{
+  margin:0 0 10px;
+  font-size:22px;
+}
+
+.slide-intro{
+  color:var(--muted);
+  line-height:1.5;
+  margin-bottom:20px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.full{
+  grid-column:1/-1;
+}
+
+label{
+  display:block;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:7px;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  box-sizing:border-box;
+  padding:13px;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:#0e172a;
+  color:var(--text);
+  outline:none;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:var(--accent);
+}
+
+textarea{
+  min-height:150px;
+  resize:vertical;
+}
+
+.upload-box{
+  border:1.5px dashed var(--line);
+  border-radius:12px;
+  padding:15px;
+}
+
+.upload-box input{
+  border:0;
+  padding:0;
+  background:transparent;
+}
+
+.upload-title{
+  font-weight:700;
+  margin-bottom:5px;
+}
+
+.limits{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:7px;
+  line-height:1.4;
+}
+
+.notice{
+  background:var(--soft);
+  border-radius:12px;
+  padding:14px;
+  margin:17px 0;
+  color:#d9e3f5;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.payment-box{
+  background:#101a2e;
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:18px;
+}
+
+.payment-layout{
+  display:grid;
+  grid-template-columns:220px 1fr;
+  gap:25px;
+  align-items:center;
+}
+
+.qr-wrap{
+  width:210px;
+  height:210px;
+  margin:auto;
+  background:white;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.qr-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.qr-placeholder{
+  color:#111;
+  text-align:center;
+  font-weight:800;
+  font-size:15px;
+  padding:20px;
+}
+
+.amount{
+  font-size:30px;
+  font-weight:800;
+  margin:5px 0 8px;
+}
+
+.upi{
+  font-family:monospace;
+  background:#0c1424;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:13px;
+  margin:13px 0;
+}
+
+.actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+  margin-top:20px;
+}
+
+.btnx{
+  border:0;
+  border-radius:10px;
+  padding:12px 18px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.btn-primary{
+  background:var(--accent);
+  color:white;
+}
+
+.btn-secondary{
+  background:transparent;
+  border:1px solid var(--line);
+  color:var(--text);
+}
+
+.btnx:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+.message{
+  margin-top:15px;
+  padding:12px;
+  border-radius:10px;
+  display:none;
+  font-size:13px;
+}
+
+.message.show{
+  display:block;
+}
+
+.message.error{
+  background:#3a1820;
+  color:#ffb7c1;
+}
+
+.message.success{
+  background:#123725;
+  color:#9af0c5;
+}
+
+.submitted{
+  text-align:left;
+}
+
+.ticket-card{
+  margin-top:18px;
+  border:1px solid var(--line);
+  border-radius:13px;
+  padding:15px;
+  background:#0f182b;
+}
+
+.ticket-id{
+  font-size:20px;
+  font-weight:800;
+}
+
+.status-pill{
+  display:inline-block;
+  margin-top:7px;
+  padding:6px 10px;
+  border-radius:99px;
+  background:var(--soft);
+  color:#9fc0ff;
+  font-size:12px;
+}
+
+.chat{
+  margin-top:18px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.chat-message{
+  max-width:85%;
+  padding:11px 13px;
+  border-radius:12px;
+  background:#0e1728;
+  border:1px solid var(--line);
+  font-size:13px;
+  line-height:1.5;
+}
+
+.chat-message.support{
+  align-self:flex-start;
+}
+
+.chat-message.user{
+  align-self:flex-end;
+  background:#162744;
+}
+
+.chat-label{
+  font-size:10px;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+
+.reply-box{
+  margin-top:18px;
+}
+
+.reply-box textarea{
+  min-height:100px;
+}
+
+@media(max-width:700px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .full{
+    grid-column:auto;
+  }
+
+  .payment-layout{
+    grid-template-columns:1fr;
+  }
+
+  .qr-wrap{
+    margin:auto;
+  }
+
+  .ticket-page{
+    padding:18px 12px 40px;
+  }
+
+  .intro h1{
+    font-size:27px;
+  }
+
+  .slide{
+    padding:18px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-<header class="header">
-  <div class="logo">FREE FIRE <span>SUPPORT</span></div>
-  <a href="index.html" class="telegram">Home</a>
-</header>
+<div class="ticket-page">
 
-<main class="form-page">
+  <div class="ticket-top">
+    <div class="ticket-brand">Free Fire Customer Support</div>
+    <div class="ticket-badge">INDEPENDENT SUPPORT</div>
+  </div>
 
-  <div class="form-container">
+  <section class="intro">
 
-    <div class="badge">NEW SUPPORT TICKET</div>
+    <div class="intro-label">
+      INDEPENDENT SUPPORT TICKET PORTAL
+    </div>
 
-    <h1>Create Your <span>Ticket</span></h1>
+    <h1>Raise your support ticket</h1>
 
-    <p class="form-intro">
-      Enter your information carefully. Telegram username and phone number
-      are mandatory.
+    <p>
+      Submit your account information, complaint details and payment proof.
+      Your ticket can be checked later using your Ticket ID and phone number.
     </p>
 
-    <form id="ticketForm">
+    <div class="note">
+      <strong>NOTE</strong>
+      We can attempt recovery if a minimum of 6 days are left from the
+      date of bind change. For any query, contact
+      <a href="https://t.me/panther408" target="_blank">@panther408</a>.
+    </div>
 
-      <label>Telegram Username *</label>
-      <input
-        type="text"
-        id="telegram"
-        placeholder="@username"
-        required
-      >
+  </section>
 
-      <label>Phone Number *</label>
-      <input
-        type="tel"
-        id="phone"
-        placeholder="Enter phone number"
-        required
-      >
 
-      <label>In-Game Name</label>
-      <input
-        type="text"
-        id="gameName"
-        placeholder="Your Free Fire name"
-      >
+  <div class="steps">
+    <div class="step active" id="step1"></div>
+    <div class="step" id="step2"></div>
+    <div class="step" id="step3"></div>
+  </div>
 
-      <label>Player UID</label>
-      <input
-        type="text"
-        id="uid"
-        placeholder="Your player UID"
-      >
 
-      <label>Email Address</label>
-      <input
-        type="email"
-        id="email"
-        placeholder="Your email"
-      >
+  <!-- =========================
+       SLIDE 1
+  ========================== -->
 
-      <label>Complaint Category *</label>
-      <select id="category" required>
-        <option value="">Select category</option>
-        <option value="Double Unsubscribe">Double Unsubscribe</option>
-        <option value="Account Recovery">Account Recovery</option>
-        <option value="Bind / Email Issue">Bind / Email Issue</option>
-        <option value="OTP Issue">OTP Issue</option>
-        <option value="Other">Other</option>
-      </select>
+  <section class="slide" id="slide1">
 
-      <label>Subject *</label>
-      <input
-        type="text"
-        id="subject"
-        placeholder="Short description of your issue"
-        required
-      >
+    <h2>Your information</h2>
 
-      <label>Complaint Details *</label>
-      <textarea
-        id="complaint"
-        rows="8"
-        placeholder="Explain your problem in detail..."
-        required
-      ></textarea>
+    <p class="slide-intro">
+      Telegram username and phone number are required.
+    </p>
 
-      <div class="upload-box">
-        <h3>Complaint Photos</h3>
-        <p>Maximum 2 MB per photo. Multiple photos allowed.</p>
+    <div class="grid">
+
+      <div>
+        <label>Telegram username *</label>
         <input
-          type="file"
-          id="photos"
-          accept="image/jpeg,image/png,image/webp"
-          multiple
+          type="text"
+          id="telegram"
+          placeholder="@username"
         >
       </div>
 
-      <div class="upload-box">
-        <h3>Complaint Videos</h3>
-        <p>Maximum 25 MB per video. MP4/MKV allowed.</p>
+      <div>
+        <label>Phone number *</label>
         <input
-          type="file"
-          id="videos"
-          accept="video/mp4,video/x-matroska"
-          multiple
+          type="tel"
+          id="phone"
+          placeholder="10-digit phone number"
         >
       </div>
 
-      <div class="payment-notice">
-        <h3>Payment Required</h3>
-        <p>
-          A service payment of <strong>₹800</strong> is required before
-          submitting your ticket.
-        </p>
-
-        <a href="payment.html" class="btn primary">
-          Make Payment
-        </a>
+      <div>
+        <label>In-game name</label>
+        <input
+          type="text"
+          id="gameName"
+          placeholder="Game name"
+        >
       </div>
 
+      <div>
+        <label>Player UID</label>
+        <input
+          type="text"
+          id="uid"
+          placeholder="Player UID"
+        >
+      </div>
+
+      <div class="full">
+        <label>Email</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Email address"
+        >
+      </div>
+
+    </div>
+
+    <div id="message1" class="message"></div>
+
+    <div class="actions">
+      <button
+        type="button"
+        class="btnx btn-primary"
+        onclick="nextSlide(2)"
+      >
+        Continue
+      </button>
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SLIDE 2
+  ========================== -->
+
+  <section class="slide hidden" id="slide2">
+
+    <h2>Raise a ticket</h2>
+
+    <p class="slide-intro">
+      Give as much relevant information as possible.
+    </p>
+
+    <div class="grid">
+
+      <div>
+        <label>Complaint category *</label>
+
+        <select id="category">
+          <option value="">Select category</option>
+          <option value="Double Unsubscribe">Double Unsubscribe</option>
+          <option value="Account Recovery">Account Recovery</option>
+          <option value="Bind / Email Issue">Bind / Email Issue</option>
+          <option value="OTP Issue">OTP Issue</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Subject *</label>
+
+        <input
+          type="text"
+          id="subject"
+          placeholder="Short description"
+        >
+      </div>
+
+      <div class="full">
+        <label>Complaint details *</label>
+
+        <textarea
+          id="complaint"
+          placeholder="Explain your issue in detail..."
+        ></textarea>
+      </div>
+
+      <div>
+
+        <label>Photos</label>
+
+        <div class="upload-box">
+
+          <div class="upload-title">
+            Complaint photos
+          </div>
+
+          <input
+            type="file"
+            id="photos"
+            accept="image/jpeg,image/png,image/webp"
+            multiple
+          >
+
+          <div class="limits">
+            Maximum 2 MB per photo.
+          </div>
+
+        </div>
+
+      </div>
+
+      <div>
+
+        <label>Video</label>
+
+        <div class="upload-box">
+
+          <div class="upload-title">
+            Complaint video
+          </div>
+
+          <input
+            type="file"
+            id="videos"
+            accept="video/mp4,video/x-matroska,.mkv"
+            multiple
+          >
+
+          <div class="limits">
+            Maximum 25 MB per video · MP4 / MKV.
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="notice">
+      Before submitting, a payment must be made and the payment screenshot
+      uploaded. Payment will be checked manually.
+    </div>
+
+    <div id="message2" class="message"></div>
+
+    <div class="actions">
+
+      <button
+        type="button"
+        class="btnx btn-secondary"
+        onclick="previousSlide(1)"
+      >
+        Back
+      </button>
+
+      <button
+        type="button"
+        class="btnx btn-primary"
+        onclick="nextSlide(3)"
+      >
+        Continue to payment
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SLIDE 3
+  ========================== -->
+
+  <section class="slide hidden" id="slide3">
+
+    <h2>Payment</h2>
+
+    <p class="slide-intro">
+      Make the required payment using your UPI app, then upload the
+      payment screenshot.
+    </p>
+
+    <div class="payment-box">
+
+      <div class="payment-layout">
+
+        <div class="qr-wrap">
+
+          <!--
+            LATER:
+            Upload your QR image as:
+            assets/payment-qr.png
+
+            The image will automatically appear here.
+          -->
+
+          <img
+            id="paymentQr"
+            src="assets/payment-qr.png"
+            alt="Payment QR"
+            onerror="this.style.display='none';document.getElementById('qrPlaceholder').style.display='block';"
+          >
+
+          <div
+            id="qrPlaceholder"
+            class="qr-placeholder"
+            style="display:none;"
+          >
+            YOUR QR CODE<br>
+            WILL APPEAR HERE
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <b>Payment amount</b>
+
+          <div class="amount">
+            ₹800
+          </div>
+
+          <div class="limits">
+            Use the QR code above or the UPI ID below.
+          </div>
+
+          <div class="upi">
+            yourupi@bank
+          </div>
+
+          <button
+            type="button"
+            class="btnx btn-secondary"
+            onclick="alert('Your UPI payment link can be added here later.')"
+          >
+            Make Payment
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div style="margin-top:22px;">
+
+      <label>Payment screenshot *</label>
+
       <div class="upload-box">
-        <h3>Payment Screenshot *</h3>
-        <p>Upload the screenshot of your ₹800 payment.</p>
 
         <input
           type="file"
           id="paymentScreenshot"
           accept="image/jpeg,image/png,image/webp"
-          required
         >
+
+        <div class="limits">
+          Upload proof of your ₹800 payment. Maximum 2 MB.
+        </div>
+
       </div>
 
-      <div id="formMessage"></div>
+    </div>
 
-      <button type="submit" id="submitBtn" class="btn primary submit-btn">
+
+    <div id="message3" class="message"></div>
+
+    <div class="actions">
+
+      <button
+        type="button"
+        class="btnx btn-secondary"
+        onclick="previousSlide(2)"
+      >
+        Back
+      </button>
+
+      <button
+        type="button"
+        id="submitBtn"
+        class="btnx btn-primary"
+        onclick="submitTicket()"
+      >
         Submit Ticket
       </button>
 
-    </form>
+    </div>
 
-  </div>
+  </section>
 
-</main>
+
+  <!-- =========================
+       SUBMITTED
+  ========================== -->
+
+  <section
+    class="slide hidden submitted"
+    id="slide4"
+  >
+
+    <h2>Ticket submitted</h2>
+
+    <p class="slide-intro">
+      Your ticket has been created and is awaiting manual payment
+      verification.
+    </p>
+
+    <div class="ticket-card">
+
+      <div class="ticket-id" id="finalTicketId">
+        #FF-00000
+      </div>
+
+      <div class="status-pill" id="finalStatus">
+        Payment verification pending
+      </div>
+
+    </div>
+
+
+    <div class="notice">
+      Save your Ticket ID and phone number. You can use them later
+      to check your ticket status.
+    </div>
+
+
+    <h2 style="margin-top:25px;">
+      Conversation
+    </h2>
+
+
+    <div class="chat" id="conversation">
+
+      <div class="chat-message support">
+
+        <div class="chat-label">
+          Support
+        </div>
+
+        Your ticket has been received. Payment verification is pending.
+        Our support team will review your complaint and evidence.
+
+      </div>
+
+    </div>
+
+
+    <div class="reply-box">
+
+      <label>Reply to support</label>
+
+      <textarea
+        id="userReplyMessage"
+        placeholder="Write a message..."
+      ></textarea>
+
+      <div class="actions">
+
+        <button
+          type="button"
+          class="btnx btn-primary"
+          onclick="sendUserReply()"
+        >
+          Send Reply
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div id="message4" class="message"></div>
+
+
+    <div class="actions">
+
+      <a
+        href="track.html"
+        class="btnx btn-secondary"
+        style="text-decoration:none;"
+      >
+        Check Ticket
+      </a>
+
+    </div>
+
+  </section>
+
+</div>
+
 
 <script src="script.js"></script>
 
