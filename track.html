@@ -57,6 +57,30 @@
 
     <div id="ticketResult"></div>
 
+    <div id="conversationBox" class="conversation-box" style="display:none;">
+
+  <h2>Support Conversation</h2>
+
+  <div id="conversation" class="conversation"></div>
+
+  <textarea
+    id="userReplyMessage"
+    rows="5"
+    placeholder="Write a message to support..."
+  ></textarea>
+
+  <button
+    type="button"
+    class="btn primary submit-btn"
+    onclick="sendUserReply()"
+  >
+    Send Reply
+  </button>
+
+  <div id="message4"></div>
+
+</div>
+
     <!-- CONVERSATION -->
 
     <div
