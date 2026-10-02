@@ -5,6 +5,381 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Track Ticket - Free Fire Support</title>
   <link rel="stylesheet" href="style.css?v=3">
+  <style>
+/* =========================
+   MODERN TRACK TICKET UI
+========================= */
+
+.track-page {
+  min-height: calc(100vh - 70px);
+  padding: 55px 20px 70px;
+  background: #f5f7fb;
+  color: #18202b;
+}
+
+.track-container {
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.track-container > .badge {
+  color: #667085;
+  border-color: #e5e7eb;
+  background: #fff;
+}
+
+.track-container > h1 {
+  color: #18202b;
+  text-align: center;
+  font-size: clamp(32px, 5vw, 48px);
+  margin: 12px 0 10px;
+}
+
+.track-container > h1 span {
+  color: #2563eb;
+}
+
+.track-intro {
+  max-width: 650px;
+  margin: 0 auto 28px;
+  text-align: center;
+  color: #667085;
+  line-height: 1.6;
+}
+
+/* Search card */
+
+.track-search-card {
+  max-width: 720px;
+  margin: 0 auto 22px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.06);
+}
+
+.track-search-card h2 {
+  color: #18202b;
+  text-align: left;
+  margin: 0 0 6px;
+}
+
+.track-muted {
+  color: #667085;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.track-search-card form {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.track-search-card form label {
+  color: #344054;
+  margin: 16px 0 7px;
+}
+
+.track-search-card form label:first-child {
+  margin-top: 0;
+}
+
+.track-search-card form input {
+  background: #fff;
+  color: #18202b;
+  border: 1px solid #d0d5dd;
+  border-radius: 10px;
+}
+
+.track-search-card form input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+}
+
+.track-search-card .submit-btn {
+  width: 100%;
+  margin-top: 20px;
+  background: #2563eb;
+  color: #fff;
+  border: 0;
+}
+
+.track-search-card .submit-btn:hover {
+  background: #1d4ed8;
+}
+
+/* Ticket result */
+
+#ticketResult {
+  margin: 22px 0;
+}
+
+.ticket-result {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.05);
+}
+
+.ticket-result h2 {
+  color: #18202b;
+  text-align: left;
+  margin-bottom: 14px;
+}
+
+.ticket-result p {
+  color: #667085;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f1f3;
+  line-height: 1.45;
+}
+
+.ticket-result p:last-of-type {
+  border-bottom: 0;
+}
+
+.ticket-result strong {
+  color: #18202b;
+}
+
+/* =========================
+   CONVERSATION
+========================= */
+
+.conversation-box {
+  margin-top: 22px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.06);
+
+  display: grid;
+  grid-template-columns: minmax(260px, .85fr) minmax(0, 1.4fr);
+  grid-template-areas:
+    "header header"
+    "ticket chat";
+  gap: 18px;
+}
+
+/* This makes the existing ticket result sit compactly beside chat */
+.conversation-box::before {
+  content: "Ticket Information";
+  grid-area: ticket;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px;
+  color: #344054;
+  font-size: 13px;
+  font-weight: 700;
+  align-self: start;
+}
+
+/* Header */
+
+.conversation-header {
+  grid-area: header;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.conversation-header .badge {
+  color: #667085;
+  border-color: #e5e7eb;
+  background: #f8fafc;
+  margin-bottom: 7px;
+}
+
+.conversation-header h2 {
+  color: #18202b;
+  text-align: left;
+  margin: 0;
+  font-size: 21px;
+}
+
+/* Conversation column */
+
+.conversation {
+  grid-area: chat;
+
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+
+  min-height: 180px;
+  max-height: 390px;
+  overflow-y: auto;
+
+  padding: 4px 3px;
+}
+
+/* Compact bubbles */
+
+.chat-message {
+  width: fit-content;
+  max-width: 72%;
+
+  padding: 9px 12px;
+  border-radius: 12px;
+
+  font-size: 13px;
+  line-height: 1.45;
+
+  white-space: pre-wrap;
+  word-break: break-word;
+
+  box-shadow: none;
+}
+
+.chat-message.user {
+  align-self: flex-end;
+  background: #2563eb;
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-message.admin {
+  align-self: flex-start;
+  background: #f1f5f9;
+  color: #172033;
+  border: 1px solid #e2e8f0;
+  border-bottom-left-radius: 4px;
+}
+
+.chat-label {
+  font-size: 10px;
+  font-weight: 700;
+  margin-bottom: 3px;
+  opacity: .7;
+}
+
+/* Reply area */
+
+.reply-box {
+  grid-area: chat;
+
+  align-self: end;
+
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 9px;
+  align-items: end;
+}
+
+#userReplyMessage {
+  width: 100%;
+  min-height: 44px;
+  max-height: 110px;
+
+  padding: 11px 12px;
+
+  resize: vertical;
+
+  background: #fff;
+  color: #18202b;
+
+  border: 1px solid #d0d5dd;
+  border-radius: 10px;
+
+  font: inherit;
+  outline: none;
+}
+
+#userReplyMessage:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+}
+
+.reply-btn {
+  width: auto;
+  min-width: 105px;
+  margin: 0;
+
+  background: #2563eb;
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  padding: 11px 16px;
+  font-weight: 700;
+}
+
+.reply-btn:hover {
+  background: #1d4ed8;
+}
+
+#message4 {
+  grid-area: chat;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+  .track-page {
+    padding: 40px 14px 55px;
+  }
+
+  .conversation-box {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "ticket"
+      "chat";
+
+    padding: 16px;
+  }
+
+  .conversation-box::before {
+    margin: 0;
+  }
+
+  .conversation {
+    max-height: 360px;
+  }
+
+  .chat-message {
+    max-width: 82%;
+  }
+
+  .reply-box {
+    grid-template-columns: 1fr;
+  }
+
+  .reply-btn {
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 500px) {
+
+  .track-search-card,
+  .conversation-box,
+  .ticket-result {
+    padding: 16px;
+  }
+
+  .track-container > h1 {
+    font-size: 32px;
+  }
+
+  .chat-message {
+    max-width: 88%;
+    font-size: 13px;
+  }
+
+}
+</style>
 </head>
 
 <body>
