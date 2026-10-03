@@ -823,7 +823,7 @@ if (trackForm) {
         document.getElementById("ticketResult");
 
       const conversationBox =
-        document.getElementById("conversationBox");
+        document.getElementById("trackDetails").style.display = "grid";
 
       result.innerHTML =
         '<p class="loading">Searching ticket...</p>';
