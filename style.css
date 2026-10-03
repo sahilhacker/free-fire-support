@@ -1928,3 +1928,58 @@ body {
 .chat-message.admin * {
   color: #111111 !important;
 }
+/* FINAL CONVERSATION UI FIX */
+.conversation .chat-message,
+.conversation .chat-message * {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  text-shadow: none !important;
+}
+
+.conversation .chat-message {
+  display: block !important;
+  width: fit-content !important;
+  max-width: 78% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 11px 14px !important;
+  white-space: pre-wrap !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  overflow: visible !important;
+}
+
+/* User = dark bubble on left */
+.conversation .chat-message.user,
+.conversation .chat-message.user * {
+  background: #172033 !important;
+  color: #ffffff !important;
+}
+
+.conversation .chat-message.user {
+  align-self: flex-start !important;
+}
+
+/* Admin = blue bubble on right */
+.conversation .chat-message.admin,
+.conversation .chat-message.admin * {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+
+.conversation .chat-message.admin {
+  align-self: flex-end !important;
+}
+
+/* Sender label */
+.conversation .chat-label {
+  display: block !important;
+  background: transparent !important;
+  color: inherit !important;
+  font-size: 11px !important;
+  margin-bottom: 5px !important;
+  opacity: .7 !important;
+}
