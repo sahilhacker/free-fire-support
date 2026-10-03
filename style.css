@@ -1,7 +1,16 @@
+/* =========================================================
+   FREE FIRE SUPPORT WEBSITE
+   CLEAN MASTER STYLE.CSS
+========================================================= */
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  background: #080808;
 }
 
 body {
@@ -10,6 +19,10 @@ body {
   color: #ffffff;
   min-height: 100vh;
 }
+
+/* =========================================================
+   HEADER
+========================================================= */
 
 .header {
   height: 70px;
@@ -43,6 +56,10 @@ body {
   border-color: #ff9d00;
   color: #ff9d00;
 }
+
+/* =========================================================
+   HOME PAGE
+========================================================= */
 
 .hero {
   text-align: center;
@@ -139,6 +156,10 @@ a {
   color: #ff9d00;
 }
 
+/* =========================================================
+   INFO / FEEDBACK
+========================================================= */
+
 .info-section,
 .feedback-section {
   max-width: 1100px;
@@ -215,6 +236,10 @@ h2 {
   grid-column: 1 / -1;
 }
 
+/* =========================================================
+   FOOTER
+========================================================= */
+
 footer {
   border-top: 1px solid #222;
   background: #0d0d0d;
@@ -257,11 +282,15 @@ footer {
   font-size: 12px;
 }
 
+/* =========================================================
+   MODAL
+========================================================= */
+
 .modal {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0, 0, 0, 0.8);
   justify-content: center;
   align-items: center;
   padding: 20px;
@@ -301,27 +330,9 @@ footer {
   cursor: pointer;
 }
 
-@media (max-width: 750px) {
-  .cards,
-  .feedback-list {
-    grid-template-columns: 1fr;
-  }
-
-  .hero {
-    padding-top: 60px;
-  }
-
-  .header {
-    padding: 0 20px;
-  }
-
-  .logo {
-    font-size: 16px;
-  }
-}
-/* =========================
+/* =========================================================
    FORM PAGES
-========================= */
+========================================================= */
 
 .form-page {
   min-height: calc(100vh - 70px);
@@ -438,7 +449,7 @@ form textarea {
 }
 
 .submit-btn:disabled {
-  opacity: .5;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
@@ -468,10 +479,9 @@ form textarea {
   color: #aaa;
 }
 
-
-/* =========================
+/* =========================================================
    PAYMENT PAGE
-========================= */
+========================================================= */
 
 .payment-page {
   text-align: center;
@@ -528,11 +538,14 @@ form textarea {
   margin-top: 5px;
 }
 
+/* =========================================================
+   TRACK TICKET PAGE
+========================================================= */
 
-/* =========================
-   TRACK EXISTING TICKET
-   CLEAN PROTOTYPE UI
-========================= */
+/*
+   IMPORTANT:
+   Track page stays BLACK like the Submit Ticket prototype.
+*/
 
 .track-page {
   min-height: calc(100vh - 70px);
@@ -542,12 +555,11 @@ form textarea {
 }
 
 .track-container {
-  width: 100%;
   max-width: 1050px;
-  margin: 0 auto;
+  margin: auto;
 }
 
-/* Heading */
+/* Track heading */
 
 .track-container > .badge {
   display: block;
@@ -561,22 +573,22 @@ form textarea {
 }
 
 .track-intro {
-  max-width: 650px;
-  margin: 0 auto 30px;
   text-align: center;
   color: #999;
+  max-width: 650px;
+  margin: 0 auto 30px;
   line-height: 1.6;
 }
 
-/* Search */
+/* Search existing ticket */
 
 .track-search-card {
-  max-width: 650px;
-  margin: 0 auto 22px;
-  padding: 24px;
-  background: #101010;
+  background: #101010 !important;
   border: 1px solid #222;
   border-radius: 14px;
+  padding: 25px;
+  max-width: 650px;
+  margin: 0 auto 25px;
 }
 
 .track-search-card h2 {
@@ -592,105 +604,161 @@ form textarea {
 }
 
 .track-search-card form {
-  padding: 0;
   background: transparent;
   border: 0;
+  padding: 0;
 }
 
-/* Search button stays orange like Submit Ticket */
-
-.track-search-card .submit-btn {
-  width: 100%;
-  margin-top: 22px;
+.track-search-card form label {
+  display: block;
+  color: #ffffff;
+  margin: 18px 0 8px;
+  font-weight: 700;
 }
 
-/* =========================
-   TICKET + CONVERSATION
-========================= */
+.track-search-card form label:first-child {
+  margin-top: 0;
+}
+
+/* =========================================================
+   TICKET RESULT
+========================================================= */
+
+#ticketResult {
+  margin-top: 25px;
+}
+
+.ticket-result {
+  background: #101010 !important;
+  border: 1px solid #222;
+  border-radius: 14px;
+  padding: 22px;
+  color: #ffffff;
+}
+
+.ticket-result h2 {
+  color: #ff9d00;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.ticket-result p {
+  color: #aaa;
+  padding: 8px 0;
+  border-bottom: 1px solid #222;
+  line-height: 1.5;
+}
+
+.ticket-result p:last-child {
+  border-bottom: none;
+}
+
+.ticket-result strong {
+  color: #ffffff;
+}
+
+/* =========================================================
+   COMPLAINT DETAILS
+   WHITE BOX + BLACK TEXT
+========================================================= */
+
+.ticket-complaint {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #292929;
+  color: #ffffff;
+}
+
+.ticket-complaint > strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.complaint-text {
+  margin-top: 10px;
+  padding: 14px;
+  background: #ffffff !important;
+  border: 1px solid #dddddd !important;
+  border-radius: 9px;
+  color: #111111 !important;
+  line-height: 1.6;
+  white-space: pre-wrap !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   TICKET + CONVERSATION LAYOUT
+========================================================= */
 
 .track-layout {
-  display: grid !important;
-  grid-template-columns: 320px minmax(0, 1fr) !important;
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
   gap: 18px;
   align-items: start;
   margin-top: 20px;
 }
 
-/* Ticket information */
+/* Ticket information card */
 
 .track-info-card {
   background: #101010 !important;
   border: 1px solid #222;
   border-radius: 14px;
   padding: 20px;
+  color: #ffffff;
 }
 
 .track-info-card h2 {
   text-align: left;
   color: #ff9d00;
-  margin-bottom: 15px;
+  margin-bottom: 14px;
 }
 
-.track-info-card p {
-  color: #aaa;
-  line-height: 1.5;
-  padding: 8px 0;
-  border-bottom: 1px solid #222;
-}
+/* =========================================================
+   CONVERSATION BOX
+========================================================= */
 
-.track-info-card strong {
-  color: #fff;
-}
-
-/* Complaint stays white */
-
-.track-info-card .ticket-complaint {
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid #292929;
-}
-
-.track-info-card .complaint-text {
-  margin-top: 10px;
-  padding: 14px;
-  background: #ffffff !important;
-  color: #111111 !important;
-  border: 1px solid #dddddd;
-  border-radius: 9px;
-  line-height: 1.55;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-
-/* =========================
-   CONVERSATION CARD
-========================= */
+/*
+   White conversation panel.
+   User message = RIGHT + BLUE.
+   Support message = LEFT + LIGHT GREY.
+*/
 
 .conversation-box {
-  margin-top: 0;
-  padding: 20px;
-  background: #101010 !important;
-  border: 1px solid #222;
+  background: #ffffff !important;
+  color: #111111 !important;
+  border: 1px solid #dddddd !important;
   border-radius: 14px;
+  padding: 20px;
   min-width: 0;
 }
 
+/* Conversation heading */
+
 .conversation-header {
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 14px;
   margin-bottom: 14px;
 }
 
 .conversation-header .badge {
-  margin-bottom: 7px;
+  margin-bottom: 8px;
+  color: #666;
+  border-color: #ddd;
 }
 
 .conversation-header h2 {
+  color: #111111 !important;
   text-align: left;
-  color: #ffffff;
   margin: 0;
 }
 
-/* WHITE CHAT AREA */
+/* =========================================================
+   MESSAGE LIST
+========================================================= */
 
 .conversation {
   width: 100%;
@@ -699,170 +767,297 @@ form textarea {
   overflow-y: auto;
   overflow-x: hidden;
 
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 
-  padding: 12px;
+  padding: 5px;
 
   background: #ffffff !important;
-  border: 1px solid #dddddd;
-  border-radius: 10px;
-
-  box-sizing: border-box;
+  color: #111111 !important;
 }
 
-/* =========================
-   CHAT BUBBLES
-========================= */
+/* =========================================================
+   MESSAGE BUBBLE
+========================================================= */
 
-.conversation .chat-message {
+/*
+   These rules deliberately target #conversation so old
+   global .chat-message rules cannot change the appearance.
+*/
+
+#conversation .chat-message {
+  position: relative !important;
+
   display: block !important;
 
   width: fit-content !important;
-  max-width: 68% !important;
+  max-width: min(72%, 560px) !important;
 
   min-width: 0 !important;
   min-height: 0 !important;
   height: auto !important;
 
-  padding: 8px 11px !important;
+  padding: 9px 12px !important;
   margin: 0 !important;
 
   border-radius: 10px !important;
 
   font-family: Arial, Helvetica, sans-serif !important;
   font-size: 13px !important;
+  font-weight: 400 !important;
   line-height: 1.4 !important;
 
   white-space: pre-wrap !important;
   overflow-wrap: anywhere !important;
   word-break: break-word !important;
 
+  box-sizing: border-box !important;
+
   opacity: 1 !important;
   visibility: visible !important;
+  overflow: visible !important;
+
+  text-shadow: none !important;
+}
+
+/* =========================================================
+   FORCE MESSAGE CONTENT ABOVE BACKGROUND
+========================================================= */
+
+#conversation .chat-message > * {
+  position: relative !important;
+  z-index: 2 !important;
   box-sizing: border-box !important;
 }
 
-/* USER = RIGHT + BLUE */
+/*
+   If JavaScript inserts plain text directly inside the
+   bubble, the bubble itself gets the correct color.
+*/
 
-.conversation .chat-message.user {
+/* =========================================================
+   USER MESSAGE
+   RIGHT SIDE / BLUE
+========================================================= */
+
+#conversation .chat-message.user {
   align-self: flex-end !important;
 
   background: #2563eb !important;
   color: #ffffff !important;
 
-  border: none !important;
+  border: 0 !important;
+
+  -webkit-text-fill-color: #ffffff !important;
 }
 
-/* ADMIN/SUPPORT = LEFT + LIGHT */
+#conversation .chat-message.user * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 
-.conversation .chat-message.admin {
+  background: transparent !important;
+}
+
+/* =========================================================
+   ADMIN / SUPPORT MESSAGE
+   LEFT SIDE / WHITE
+========================================================= */
+
+#conversation .chat-message.admin {
   align-self: flex-start !important;
 
-  background: #f1f3f5 !important;
+  background: #ffffff !important;
   color: #111111 !important;
 
   border: 1px solid #dddddd !important;
+
+  -webkit-text-fill-color: #111111 !important;
 }
 
-/* Sender labels */
-
-.conversation .chat-label {
-  display: block !important;
-
-  margin-bottom: 3px !important;
-
-  font-size: 10px !important;
-  line-height: 1.1 !important;
-  font-weight: 700 !important;
+#conversation .chat-message.admin * {
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
 
   background: transparent !important;
-  opacity: .65 !important;
+}
+
+/* =========================================================
+   SENDER LABEL
+========================================================= */
+
+#conversation .chat-label {
+  display: block !important;
+
+  position: relative !important;
+  z-index: 3 !important;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+
+  line-height: 1.2 !important;
+
+  margin: 0 0 3px !important;
+  padding: 0 !important;
+
+  background: transparent !important;
 }
 
 /* User label */
 
-.conversation .chat-message.user .chat-label {
-  color: #ffffff !important;
+#conversation .chat-message.user .chat-label {
+  color: #dbeafe !important;
+  -webkit-text-fill-color: #dbeafe !important;
 }
 
-/* Admin label */
+/* Support label */
 
-.conversation .chat-message.admin .chat-label {
-  color: #111111 !important;
+#conversation .chat-message.admin .chat-label {
+  color: #555555 !important;
+  -webkit-text-fill-color: #555555 !important;
 }
 
-/* Make dynamically inserted text visible */
-
-.conversation .chat-message.user,
-.conversation .chat-message.user * {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-}
-
-.conversation .chat-message.admin,
-.conversation .chat-message.admin * {
-  color: #111111 !important;
-  -webkit-text-fill-color: #111111 !important;
-}
-
-/* =========================
-   USER REPLY AREA
-========================= */
+/* =========================================================
+   REPLY AREA
+========================================================= */
 
 .reply-box {
   margin-top: 12px;
   padding-top: 12px;
-  border-top: 1px solid #222;
+
+  border-top: 1px solid #e5e5e5;
 }
 
 #userReplyMessage {
+  display: block !important;
+
   width: 100% !important;
 
-  min-height: 60px !important;
-  height: 60px !important;
-  max-height: 110px !important;
+  min-height: 65px !important;
+  height: 65px !important;
+  max-height: 120px !important;
 
-  padding: 9px 11px !important;
+  padding: 10px 12px !important;
   margin: 0 0 8px !important;
 
-  background: #080808 !important;
-  color: #ffffff !important;
+  box-sizing: border-box !important;
 
-  border: 1px solid #333 !important;
-  border-radius: 9px;
-
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 13px;
-
-  line-height: 1.4;
   resize: vertical;
 
-  box-sizing: border-box;
+  background: #ffffff !important;
+  color: #111111 !important;
+
+  border: 1px solid #cccccc !important;
+  border-radius: 9px;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.45 !important;
+
+  outline: none;
+}
+
+#userReplyMessage::placeholder {
+  color: #888888 !important;
+  opacity: 1 !important;
 }
 
 #userReplyMessage:focus {
-  outline: none;
-  border-color: #ff9d00 !important;
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
 }
 
 /* Send Reply */
 
 .reply-btn {
   width: 100%;
-  margin-top: 0;
+  margin-top: 0 !important;
+
+  background: #2563eb !important;
+  color: #ffffff !important;
+
+  border: 0 !important;
+  border-radius: 9px !important;
+
+  padding: 11px 16px !important;
+
+  font-weight: 700;
+  cursor: pointer;
 }
 
-/* Message/error below reply */
+.reply-btn:hover {
+  background: #1d4ed8 !important;
+}
+
+/* Reply status/error message */
 
 #message4 {
   margin-top: 10px;
+  color: #333333;
+  font-size: 13px;
+  line-height: 1.4;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* =========================================================
+   ADMIN PANEL
+========================================================= */
+
+.admin-search,
+.admin-ticket {
+  background: #101010;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 25px;
+  margin-top: 20px;
+}
+
+.admin-ticket h2 {
+  margin-bottom: 18px;
+  color: #ff9d00;
+}
+
+.admin-ticket p {
+  padding: 10px 0;
+  border-bottom: 1px solid #1f1f1f;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+.admin-ticket strong {
+  color: #fff;
+}
+
+.admin-ticket hr {
+  border: 0;
+  border-top: 1px solid #292929;
+  margin: 30px 0;
+}
+
+.admin-ticket select,
+.admin-ticket textarea {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 15px;
+  background: #080808;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 7px;
+}
+
+.admin-ticket textarea {
+  resize: vertical;
+}
+
+.admin-ticket label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+/* =========================================================
+   GENERAL MOBILE
+========================================================= */
 
 @media (max-width: 800px) {
 
@@ -871,10 +1066,57 @@ form textarea {
   }
 
   .track-layout {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr;
   }
 
-  .conversation .chat-message {
+  #conversation .chat-message {
     max-width: 82% !important;
+  }
+
+  .conversation-box,
+  .track-info-card,
+  .ticket-result {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 750px) {
+
+  .cards,
+  .feedback-list {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 60px;
+  }
+
+  .header {
+    padding: 0 20px;
+  }
+
+  .logo {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .form-page {
+    padding: 45px 15px;
+  }
+
+  form,
+  .payment-card {
+    padding: 20px;
+  }
+
+  .payment-card h2 {
+    font-size: 35px;
+  }
+
+  #conversation .chat-message {
+    max-width: 86% !important;
+    font-size: 13px !important;
   }
 }
