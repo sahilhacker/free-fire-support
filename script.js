@@ -8,17 +8,52 @@ const API_URL =
 
 async function postJSON(data) {
 
-  const response = await fetch(API_URL, {
-    method: "POST",
+  const response =
+    await fetch(API_URL, {
+      method: "POST",
 
-    headers: {
-      "Content-Type": "text/plain;charset=utf-8"
-    },
+      redirect: "follow",
 
-    body: JSON.stringify(data)
-  });
+      headers: {
+        "Content-Type":
+          "text/plain;charset=utf-8"
+      },
 
-  return await response.json();
+      body:
+        JSON.stringify(data)
+    });
+
+
+  if (!response.ok) {
+
+    throw new Error(
+      `Server error: ${response.status}`
+    );
+
+  }
+
+
+  const text =
+    await response.text();
+
+
+  try {
+
+    return JSON.parse(text);
+
+  } catch (error) {
+
+    console.error(
+      "Invalid server response:",
+      text
+    );
+
+    throw new Error(
+      "The support server returned an invalid response."
+    );
+
+  }
+
 }
 
 
@@ -823,7 +858,10 @@ if (trackForm) {
         document.getElementById("ticketResult");
 
       const conversationBox =
-        document.getElementById("trackDetails").style.display = "grid";
+        document.getElementById("conversationBox");
+
+
+      /* Clear previous result */
 
       result.innerHTML =
         '<p class="loading">Searching ticket...</p>';
@@ -831,6 +869,16 @@ if (trackForm) {
       if (conversationBox) {
         conversationBox.style.display = "none";
       }
+
+
+      if (!ticketId || !phone) {
+
+        result.innerHTML =
+          '<p class="form-message error">Please enter Ticket ID and phone number.</p>';
+
+        return;
+      }
+
 
       try {
 
@@ -845,12 +893,13 @@ if (trackForm) {
 
           });
 
-        if (!response.success) {
+
+        if (!response || !response.success) {
 
           result.innerHTML =
             `<p class="form-message error">
               ${escapeHtml(
-                response.message ||
+                response?.message ||
                 "Ticket not found."
               )}
             </p>`;
@@ -858,11 +907,32 @@ if (trackForm) {
           return;
         }
 
+
         const ticket =
           response.ticket;
-        
-        trackedTicketId = ticket.ticketId || ticketId;
-trackedPhone = ticket.phone || phone;
+
+
+        if (!ticket) {
+
+          result.innerHTML =
+            '<p class="form-message error">Ticket information was not returned.</p>';
+
+          return;
+        }
+
+
+        /* Save ticket for replies */
+
+        trackedTicketId =
+          ticket.ticketId || ticketId;
+
+        trackedPhone =
+          ticket.phone || phone;
+
+
+        /* =========================
+           TICKET INFORMATION
+        ========================= */
 
         result.innerHTML = `
 
@@ -872,7 +942,7 @@ trackedPhone = ticket.phone || phone;
 
             <p>
               <strong>Ticket ID:</strong>
-              ${escapeHtml(ticket.ticketId || "")}
+              ${escapeHtml(ticket.ticketId || ticketId)}
             </p>
 
             <p>
@@ -899,7 +969,7 @@ trackedPhone = ticket.phone || phone;
             <p>
               <strong>Phone:</strong>
               ${escapeHtml(
-                ticket.phone || ""
+                ticket.phone || phone
               )}
             </p>
 
@@ -938,12 +1008,10 @@ trackedPhone = ticket.phone || phone;
               </strong>
 
               <div class="complaint-text">
-
                 ${escapeHtml(
                   ticket.complaintDetails ||
                   "No complaint details found."
                 )}
-
               </div>
 
             </div>
@@ -954,20 +1022,20 @@ trackedPhone = ticket.phone || phone;
 
 
         /* =========================
-           LOAD CONVERSATION
+           CONVERSATION
         ========================= */
 
         const conversation =
-          document.getElementById(
-            "conversation"
-          );
+          document.getElementById("conversation");
+
 
         if (conversation) {
 
           conversation.innerHTML = "";
 
+
           if (
-            ticket.conversation &&
+            Array.isArray(ticket.conversation) &&
             ticket.conversation.length > 0
           ) {
 
@@ -977,14 +1045,17 @@ trackedPhone = ticket.phone || phone;
                 const msg =
                   document.createElement("div");
 
+
                 const sender =
                   String(
                     item.sender || ""
                   ).toLowerCase();
 
+
                 const isAdmin =
                   sender === "admin" ||
                   sender === "support";
+
 
                 msg.className =
                   "chat-message " +
@@ -992,22 +1063,33 @@ trackedPhone = ticket.phone || phone;
                     ? "admin"
                     : "user");
 
+
+                const label =
+                  isAdmin
+                    ? "Support"
+                    : "You";
+
+
                 msg.innerHTML = `
 
                   <div class="chat-label">
-                    ${isAdmin ? "Support" : "You"}
+                    ${label}
                   </div>
 
-                  ${escapeHtml(
-                    item.message || ""
-                  )}
+                  <div class="chat-text">
+                    ${escapeHtml(
+                      item.message || ""
+                    )}
+                  </div>
 
                 `;
+
 
                 conversation.appendChild(msg);
 
               }
             );
+
 
           } else {
 
@@ -1019,7 +1101,9 @@ trackedPhone = ticket.phone || phone;
                   Support
                 </div>
 
-                No messages yet. You can send a message below.
+                <div class="chat-text">
+                  No messages yet. You can send a message below.
+                </div>
 
               </div>
 
@@ -1030,6 +1114,10 @@ trackedPhone = ticket.phone || phone;
         }
 
 
+        /* =========================
+           SHOW CONVERSATION
+        ========================= */
+
         if (conversationBox) {
 
           conversationBox.style.display =
@@ -1037,12 +1125,22 @@ trackedPhone = ticket.phone || phone;
 
         }
 
+
       } catch (error) {
 
-        console.error(error);
+        console.error(
+          "Ticket lookup error:",
+          error
+        );
+
 
         result.innerHTML =
-          '<p class="form-message error">Unable to connect to the support server.</p>';
+          `<p class="form-message error">
+            ${escapeHtml(
+              error.message ||
+              "Unable to connect to the support server."
+            )}
+          </p>`;
 
       }
 
