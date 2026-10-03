@@ -101,62 +101,44 @@
 
 
     <!-- JAVASCRIPT WILL INSERT THE TICKET RESULT HERE -->
-    <div id="ticketResult"></div>
+   <div id="trackDetails" class="track-layout" style="display:none;">
 
+  <section id="ticketResult" class="track-info-card">
+    <!-- JS will insert ticket information here -->
+  </section>
 
-    <!-- CONVERSATION -->
-    <section
-      id="conversationBox"
-      class="conversation-box"
-      style="display:none;"
-    >
+  <section id="conversationBox" class="conversation-box">
 
-      <div class="conversation-header">
+    <div class="conversation-header">
+      <div class="badge">SUPPORT CHAT</div>
+      <h2>Ticket Conversation</h2>
+      <p>Messages between you and support.</p>
+    </div>
 
-        <div>
-          <div class="badge">
-            SUPPORT CHAT
-          </div>
+    <div id="conversation" class="conversation"></div>
 
-          <h2>
-            Ticket Conversation
-          </h2>
-        </div>
+    <div class="reply-box">
+      <textarea
+        id="userReplyMessage"
+        rows="3"
+        placeholder="Write a message to support..."
+      ></textarea>
 
-      </div>
+      <button
+        type="button"
+        class="reply-btn"
+        onclick="sendUserReply()"
+      >
+        Send Reply
+      </button>
+    </div>
 
+    <div id="message4"></div>
 
-      <div
-        id="conversation"
-        class="conversation"
-      ></div>
+  </section>
 
-
-      <div class="reply-box">
-
-        <textarea
-          id="userReplyMessage"
-          rows="3"
-          placeholder="Write a message to support..."
-        ></textarea>
-
-        <button
-          type="button"
-          class="btn primary reply-btn"
-          onclick="sendUserReply()"
-        >
-          Send Reply
-        </button>
-
-      </div>
-
-
-      <div id="message4"></div>
-
-    </section>
-
-  </div>
-
+</div>
+    
 </main>
 
 
