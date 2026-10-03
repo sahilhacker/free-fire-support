@@ -1,0 +1,572 @@
+/* =========================================================
+   TRACK EXISTING TICKET
+   Free Fire Support
+   ========================================================= */
+
+:root{
+  --track-bg:#0b1020;
+  --track-surface:#121a2b;
+  --track-surface-2:#182238;
+  --track-text:#f4f7ff;
+  --track-muted:#aab5ca;
+  --track-line:#2b3853;
+  --track-blue:#2563eb;
+  --track-blue-dark:#1d4ed8;
+  --track-white:#ffffff;
+  --track-black:#111827;
+  --track-danger:#ff7b72;
+  --track-success:#55d49a;
+}
+
+.track-page,
+.track-page *{
+  box-sizing:border-box;
+}
+
+.track-page{
+  min-height:calc(100vh - 90px);
+  background:var(--track-bg);
+  color:var(--track-text);
+  padding:28px 18px 50px;
+}
+
+.track-container{
+  width:100%;
+  max-width:1050px;
+  margin:0 auto;
+}
+
+/* -------------------------
+   Header / Intro
+   ------------------------- */
+
+.track-page .badge{
+  display:inline-flex;
+  align-items:center;
+  padding:6px 10px;
+  border-radius:999px;
+  background:var(--track-surface-2);
+  border:1px solid var(--track-line);
+  color:var(--track-muted);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.06em;
+}
+
+.track-page h1{
+  margin:10px 0 8px;
+  font-size:32px;
+  line-height:1.12;
+  letter-spacing:-.03em;
+  color:var(--track-text);
+}
+
+.track-page h1 span{
+  color:#5b8cff;
+}
+
+.track-intro{
+  max-width:700px;
+  margin:0 0 22px;
+  color:var(--track-muted);
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* -------------------------
+   Search card
+   ------------------------- */
+
+.track-search-card{
+  background:var(--track-surface);
+  border:1px solid var(--track-line);
+  border-radius:18px;
+  padding:22px;
+  margin-bottom:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+
+.track-search-card h2{
+  margin:0 0 6px;
+  color:var(--track-text);
+  font-size:19px;
+}
+
+.track-muted{
+  color:var(--track-muted);
+  font-size:13px;
+  line-height:1.5;
+  margin:0 0 18px;
+}
+
+.track-search-card form{
+  display:grid;
+  grid-template-columns:1fr 1fr auto;
+  gap:12px;
+  align-items:end;
+}
+
+.track-search-card label{
+  display:block;
+  margin-bottom:7px;
+  color:var(--track-text);
+  font-size:12px;
+  font-weight:800;
+}
+
+.track-search-card input{
+  width:100%;
+  height:45px;
+  padding:0 13px;
+  border:1px solid var(--track-line);
+  border-radius:10px;
+  background:#0f1728;
+  color:var(--track-text);
+  outline:none;
+}
+
+.track-search-card input::placeholder{
+  color:#74819a;
+}
+
+.track-search-card input:focus{
+  border-color:#4f8cff;
+  box-shadow:0 0 0 3px rgba(37,99,235,.16);
+}
+
+.submit-btn{
+  height:45px;
+  white-space:nowrap;
+}
+
+/* -------------------------
+   Primary button
+   ------------------------- */
+
+.track-page .btn{
+  border:0;
+  border-radius:10px;
+  padding:11px 17px;
+  font-size:13px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.track-page .btn.primary{
+  background:var(--track-blue);
+  color:#fff;
+}
+
+.track-page .btn.primary:hover{
+  background:var(--track-blue-dark);
+}
+
+.track-page .btn:disabled,
+.track-page .btn.disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+/* -------------------------
+   Result area
+   ------------------------- */
+
+#ticketResult{
+  width:100%;
+}
+
+.track-layout{
+  display:grid;
+  grid-template-columns:320px minmax(0,1fr);
+  gap:16px;
+  align-items:start;
+}
+
+/* -------------------------
+   Ticket information card
+   ------------------------- */
+
+.track-info-card{
+  background:var(--track-surface);
+  border:1px solid var(--track-line);
+  border-radius:18px;
+  padding:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.16);
+}
+
+.track-info-card h2{
+  margin:0 0 14px;
+  color:var(--track-text);
+  font-size:18px;
+}
+
+.track-info-row{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  padding:10px 0;
+  border-bottom:1px solid rgba(43,56,83,.65);
+}
+
+.track-info-row:last-child{
+  border-bottom:0;
+}
+
+.track-info-label{
+  color:var(--track-muted);
+  font-size:10px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+
+.track-info-value{
+  color:var(--track-text);
+  font-size:13px;
+  font-weight:700;
+  overflow-wrap:anywhere;
+}
+
+.track-status{
+  display:inline-flex;
+  width:max-content;
+  max-width:100%;
+  padding:5px 9px;
+  border-radius:999px;
+  background:#1b2b4a;
+  color:#9fc0ff;
+  font-size:11px;
+  font-weight:800;
+}
+
+/* -------------------------
+   Complaint
+   ------------------------- */
+
+.track-complaint{
+  margin-top:14px;
+  background:var(--track-white);
+  color:var(--track-black);
+  border-radius:13px;
+  padding:14px;
+}
+
+.track-complaint h3{
+  margin:0 0 8px;
+  color:#111827;
+  font-size:13px;
+}
+
+.track-complaint-text{
+  color:#111827;
+  font-size:13px;
+  line-height:1.55;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+
+/* -------------------------
+   Conversation
+   ------------------------- */
+
+.conversation-box{
+  width:100%;
+  background:var(--track-white);
+  color:var(--track-black);
+  border:1px solid #dfe5ef;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.16);
+}
+
+.conversation-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 17px;
+  background:var(--track-white);
+  border-bottom:1px solid #e5e7eb;
+}
+
+.conversation-header h2{
+  margin:5px 0 0;
+  color:#111827;
+  font-size:17px;
+}
+
+/* Important:
+   Keep the conversation as a flex column.
+   Individual bubbles shrink-wrap naturally. */
+
+#conversation.conversation{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  padding:15px;
+  max-height:480px;
+  overflow-y:auto;
+  background:#f7f9fc;
+}
+
+/* -------------------------
+   Message bubbles
+   ------------------------- */
+
+/* Base selector covers common JS class names */
+#conversation .chat-message,
+#conversation .message{
+  display:block;
+  width:fit-content;
+  max-width:min(74%,520px);
+  padding:9px 12px;
+  border-radius:13px;
+  font-size:12px;
+  line-height:1.45;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+  box-shadow:0 1px 2px rgba(15,23,42,.08);
+}
+
+/* SUPPORT / ADMIN = LEFT */
+#conversation .chat-message.admin,
+#conversation .message.admin,
+#conversation .chat-message.support,
+#conversation .message.support{
+  align-self:flex-start;
+  background:#ffffff;
+  color:#111827;
+  border:1px solid #dfe5ef;
+  border-bottom-left-radius:4px;
+}
+
+/* USER = RIGHT */
+#conversation .chat-message.user,
+#conversation .message.user{
+  align-self:flex-end;
+  background:var(--track-blue);
+  color:#ffffff;
+  border:1px solid var(--track-blue);
+  border-bottom-right-radius:4px;
+}
+
+/* Sender label */
+#conversation .chat-message small,
+#conversation .message small{
+  display:block;
+  margin-top:4px;
+  font-size:9px;
+  line-height:1.2;
+  opacity:.65;
+}
+
+#conversation .chat-message.user small,
+#conversation .message.user small{
+  color:#dbe8ff;
+}
+
+#conversation .chat-message.admin small,
+#conversation .message.admin small,
+#conversation .chat-message.support small,
+#conversation .message.support small{
+  color:#64748b;
+}
+
+/* -------------------------
+   Reply area
+   ------------------------- */
+
+.reply-box{
+  display:flex;
+  gap:9px;
+  padding:12px;
+  background:#ffffff;
+  border-top:1px solid #e5e7eb;
+  align-items:flex-end;
+}
+
+.reply-box textarea{
+  flex:1;
+  min-height:58px;
+  max-height:120px;
+  resize:vertical;
+  padding:10px 12px;
+  border:1px solid #d8dee9;
+  border-radius:10px;
+  background:#f8fafc;
+  color:#111827;
+  font:inherit;
+  font-size:12px;
+  line-height:1.4;
+  outline:none;
+}
+
+.reply-box textarea::placeholder{
+  color:#8994a7;
+}
+
+.reply-box textarea:focus{
+  border-color:var(--track-blue);
+  box-shadow:0 0 0 3px rgba(37,99,235,.12);
+}
+
+.reply-btn{
+  flex:0 0 auto;
+  min-height:40px;
+}
+
+#message4{
+  padding:0 12px 12px;
+  background:#fff;
+}
+
+/* -------------------------
+   Error / success messages
+   ------------------------- */
+
+.track-page .error{
+  margin:8px 0;
+  color:var(--track-danger);
+  font-size:12px;
+}
+
+.track-page .success{
+  margin:8px 0;
+  color:var(--track-success);
+  font-size:12px;
+}
+
+/* -------------------------
+   Footer
+   ------------------------- */
+
+.track-page + footer,
+body > footer{
+  background:#080d19;
+  border-top:1px solid #1c2940;
+  padding:20px 15px;
+  text-align:center;
+}
+
+.footer-links{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.footer-links a{
+  color:#9fb0ca;
+  font-size:11px;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.footer-links a:hover{
+  color:#6ea0ff;
+}
+
+.copyright{
+  margin:9px 0 0;
+  color:#66748b;
+  font-size:10px;
+}
+
+/* -------------------------
+   Mobile
+   ------------------------- */
+
+@media(max-width:800px){
+
+  .track-page{
+    padding:20px 13px 35px;
+  }
+
+  .track-page h1{
+    font-size:27px;
+  }
+
+  .track-search-card{
+    padding:17px;
+  }
+
+  .track-search-card form{
+    grid-template-columns:1fr;
+  }
+
+  .submit-btn{
+    width:100%;
+  }
+
+  .track-layout{
+    grid-template-columns:1fr;
+  }
+
+  .track-info-card{
+    padding:16px;
+  }
+
+  #conversation.conversation{
+    max-height:420px;
+  }
+
+  #conversation .chat-message,
+  #conversation .message{
+    max-width:84%;
+  }
+}
+
+@media(max-width:480px){
+
+  .track-page{
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  .track-page h1{
+    font-size:24px;
+  }
+
+  .track-intro{
+    font-size:13px;
+  }
+
+  .track-search-card{
+    border-radius:15px;
+  }
+
+  .conversation-box{
+    border-radius:15px;
+  }
+
+  .conversation-header{
+    padding:13px;
+  }
+
+  #conversation.conversation{
+    padding:12px;
+    gap:8px;
+  }
+
+  #conversation .chat-message,
+  #conversation .message{
+    max-width:88%;
+    padding:8px 10px;
+    font-size:11px;
+  }
+
+  .reply-box{
+    padding:9px;
+  }
+
+  .reply-box textarea{
+    min-height:52px;
+    font-size:11px;
+  }
+
+  .reply-btn{
+    padding:10px 12px !important;
+    font-size:11px !important;
+  }
+}
