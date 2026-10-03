@@ -842,29 +842,25 @@ textarea{
     </div>
 
 
-    <div class="reply-box">
+   <div class="reply-box">
+  <textarea
+    id="userReplyMessage"
+    rows="2"
+    placeholder="Write a message to support..."
+  ></textarea>
 
-      <label>Reply to support</label>
+  <div class="reply-actions">
+    <button
+      type="button"
+      class="btn primary reply-btn"
+      onclick="sendUserReply()"
+    >
+      Send Reply
+    </button>
+  </div>
+</div>
 
-      <textarea
-        id="userReplyMessage"
-        placeholder="Write a message..."
-      ></textarea>
-
-      <div class="actions">
-
-        <button
-          type="button"
-          class="btnx btn-primary"
-          onclick="sendUserReply()"
-        >
-          Send Reply
-        </button>
-
-      </div>
-
-    </div>
-
+<div id="message4"></div>
 
     <div id="message4" class="message"></div>
 
