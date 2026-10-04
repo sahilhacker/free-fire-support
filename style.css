@@ -1326,3 +1326,51 @@ form textarea {
 #conversationBox .chat-message.admin {
   align-self: flex-start !important;
 }
+#loginScreen{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--bg);
+  z-index:9999;
+}
+
+.login-box{
+  width:360px;
+  max-width:90%;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:25px;
+}
+
+.login-box h2{
+  margin-top:0;
+}
+
+.login-box input{
+  width:100%;
+  margin-bottom:12px;
+  padding:12px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:var(--panel2);
+  color:var(--text);
+}
+
+.login-box button{
+  width:100%;
+  padding:12px;
+  border:0;
+  border-radius:9px;
+  background:var(--accent);
+  color:white;
+  font-weight:800;
+}
+
+#loginError{
+  color:var(--bad);
+  font-size:12px;
+  margin-top:10px;
+}
