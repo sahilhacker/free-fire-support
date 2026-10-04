@@ -1148,14 +1148,3 @@ if (trackForm) {
   );
 
 }
-async function adminLogin(){
-  const email = document.getElementById('loginEmail').value.trim();
-  const password = document.getElementById('loginPassword').value;
-
-  try{
-    await firebase.auth().signInWithEmailAndPassword(email, password);
-  }catch(error){
-    document.getElementById('loginError').textContent =
-      error.message;
-  }
-}
