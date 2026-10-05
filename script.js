@@ -546,11 +546,10 @@ async function submitTicket() {
     /* PAYMENT SCREENSHOT */
 
     await uploadFile(
-      paymentScreenshot,
-      createdTicketId,
-      "Payment Screenshot"
-    );
-
+  paymentScreenshot,
+  createdTicketId,
+  "payment"
+);
 
     /* PHOTOS */
 
